@@ -1,4 +1,4 @@
 class RelSetItem < ActiveRecord::Base
-  belongs_to ItemSet
-  belongs_to Item
+  belongs_to :item_set
+  belongs_to :item
 end

@@ -1,5 +1,5 @@
 class RelHeroDivide < ActiveRecord::Base
-  has_many ItemSet
-  belongs_to Hero
-  belongs_to Divide
+  has_many :item_sets
+  belongs_to :hero
+  belongs_to :divide
 end

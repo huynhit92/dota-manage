@@ -1,3 +1,3 @@
 class Item < ActiveRecord::Base
-  has_many RelSetItem
+  has_many :rel_set_items
 end

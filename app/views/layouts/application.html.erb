@@ -4,11 +4,21 @@
   <title>Dota</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <% if current_user %>
+    <%= render "layouts/header" %>
+    <!-- Main -->
+    <div class="container">
+      <%= yield %>
+    </div><!--/container-->
+    <!-- /Main -->
+    <%= render "layouts/footer" %>
+  <% else %>
+    <%= yield %>
+  <% end %>
+  
 </body>
 </html>

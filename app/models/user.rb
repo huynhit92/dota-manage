@@ -1,3 +1,6 @@
+#coding: utf-8
 class User < ActiveRecord::Base
-  has_many :post
+
+  devise :database_authenticatable
+  has_many :posts
 end

@@ -12,7 +12,12 @@
     <%= render "layouts/header" %>
     <!-- Main -->
     <div class="container">
-      <%= yield %>
+      <div class="row">
+        <%= render "layouts/navigation" %>
+        <div class="col-sm-3">
+          <%= yield %>
+        </div>
+      </div>
     </div><!--/container-->
     <!-- /Main -->
     <%= render "layouts/footer" %>

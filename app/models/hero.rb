@@ -8,7 +8,7 @@ class Hero < ActiveRecord::Base
   has_many :rel_hero_divides
   has_many :skills
 
-  enumerize :type, in: {:strength => STRENGTH, :agility => AGILITY, :intelligent => INTELLIGENT}, predicates: true
+  enumerize :hero_type, in: {:strength => STRENGTH, :agility => AGILITY, :intelligent => INTELLIGENT}, predicates: true
 
   def img_path
     return "heroes/" + self.img_url

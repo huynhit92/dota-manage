@@ -6,7 +6,7 @@ ActiveRecord::Base.module_eval do
 end
 
 MagicUserstamp.config.setup do |config|
-  config.with_options(:stamper_class_name => 'Account') do |c|
+  config.with_options(:stamper_class_name => 'User') do |c|
     c.on(:create , :created_by)
     c.on(:update , :updated_by)
   end

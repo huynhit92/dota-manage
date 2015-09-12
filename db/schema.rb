@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150912043740) do
 
   create_table "heroes", force: :cascade do |t|
     t.string   "name",        limit: 255,   default: "", null: false
-    t.integer  "type",        limit: 4,     default: 1,  null: false
+    t.integer  "hero_type",   limit: 4,     default: 1,  null: false
     t.text     "description", limit: 65535
     t.string   "img_url",     limit: 255,   default: "", null: false
     t.integer  "created_by",  limit: 4

@@ -1,0 +1,15 @@
+<h1>Hero and Divide</h1>
+<% if @rel_hero_divides.present? %>
+  <ul>
+      <% @rel_hero_divides.each do |rel_hero_divide| %>
+        <%= link_to "Edit", edit_rel_hero_divides_path(rel_hero_divide) %>
+        <%= link_to "Remove", rel_hero_divide_path(rel_hero_divide), method: :delete,
+                                       data: { confirm: "You sure?" } %>
+      <% end %>
+  </ul>
+  <%= link_to "Add more", new_rel_hero_divide_path %>
+<% else %>
+  No record
+  <br>
+  <%= link_to "Add new", new_rel_hero_divide_path %>
+<% end %>

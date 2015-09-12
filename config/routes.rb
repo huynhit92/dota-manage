@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   
   root 'home#index'
 
-  resources :heroes
+  resources :rel_hero_divides
+  resources :heroes do
+    resources :rel_hero_divides
+  end
+  resources :divides do
+    resources :rel_hero_divides
+  end
 
- 
 end

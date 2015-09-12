@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+heroes= [
+ { name: "Abaddon", type: 1, description: "abaddon created by thinh ngu vcl", img_url: "abaddon.jpg"}
+]
+
+heroes.each do |hero|
+ Hero.create! hero
+end

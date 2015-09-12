@@ -2,9 +2,14 @@
 <% if @rel_hero_divides.present? %>
   <ul>
       <% @rel_hero_divides.each do |rel_hero_divide| %>
-        <%= link_to "Edit", edit_rel_hero_divides_path(rel_hero_divide) %>
+        <%= Hero.find(rel_hero_divide.hero_id).name %>
+        -------
+        <%= Divide.find(rel_hero_divide.divide_id).name %>
+        <br>
+        <%= link_to "Edit", edit_rel_hero_divide_path(rel_hero_divide) %>
         <%= link_to "Remove", rel_hero_divide_path(rel_hero_divide), method: :delete,
                                        data: { confirm: "You sure?" } %>
+        <br>
       <% end %>
   </ul>
   <%= link_to "Add more", new_rel_hero_divide_path %>

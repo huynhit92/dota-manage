@@ -1,2 +1,3 @@
-<%= @heroes %>
-dit me thang thinh ngu nhu con cho
+<% @heroes.each do |hero| %>
+  <%= image_tag hero.img_path %>
+<% end %>

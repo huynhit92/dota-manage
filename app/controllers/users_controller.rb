@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if params[:q].present?
       @users = @q.result(distinct: true).page(params[:page])
     else
-      @users = @accounts.none.page(params[:page])
+      @users = @users.none.page(params[:page])
     end
   end
   

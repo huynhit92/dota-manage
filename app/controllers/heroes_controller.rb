@@ -25,6 +25,16 @@ class HeroesController < ApplicationController
     
   end
   
+  def list_ajax
+    Rails.logger.debug("COME IN HERE")
+    @q = Hero.all.ransack(params[:q])
+    if params[:q].present?
+      @heroes = @q.result(distinct: true).page(params[:page])
+    else
+      @heroes = @heroes.none.page(params[:page])
+    end
+  end
+
   private
   
 end

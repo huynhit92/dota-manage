@@ -1,0 +1,26 @@
+<h1>New Relation of Hero</h1>
+
+<%= form_for [@rel_hero_divide] , :html => {:class => 'form-horizontal'} do |f| %>
+  <% if @rel_hero_divide.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @rel_hero_divide.errors.count%>Bug cmnr</h2>
+
+      <ul>
+      <% @rel_hero_divide.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.number_field :hero_id %>
+
+  <%= link_to 'Choose Hero', heroes_list_ajax_path, {:remote => true, :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', "data-target" => "#modal"} %>
+
+  </button>
+  <br>
+  <%= f.collection_select :divide_id, Divide.all, :id, :name %>
+  <br>
+  <%= f.submit "Create" %>
+  
+<% end %>

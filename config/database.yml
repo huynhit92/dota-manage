@@ -4,7 +4,7 @@ development:
  reconnect: false
  database: dota
  pool: 5
- username: root
- password: 
- host: 127.0.0.1
+ username: netmile
+ password: netmile
+ host: dev-vpc.cb5wgkbfnfgu.ap-northeast-1.rds.amazonaws.com
  port: 3306

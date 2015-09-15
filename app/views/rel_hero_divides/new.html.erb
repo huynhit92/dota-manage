@@ -18,9 +18,15 @@
   <%= link_to 'Choose Hero', heroes_list_ajax_path, {:remote => true, :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', "data-target" => "#modal"} %>
 
   </button>
-  <br>
-  <%= f.collection_select :divide_id, Divide.all, :id, :name %>
-  <br>
+  
+  <%= f.number_field :divide_id %>
+  
+  <%= link_to 'Choose Divide', divides_list_ajax_path, {:remote => true, :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', "data-target" => "#modal"} %>
+
+  </button>
+  
+  </br></br>
+  
   <%= f.submit "Create" %>
   
 <% end %>

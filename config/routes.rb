@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :divides do
     resources :rel_hero_divides
   end
+  get 'divides_list_ajax' => "divides#list_ajax"
 
 end

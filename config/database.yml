@@ -4,7 +4,7 @@ development:
  reconnect: false
  database: dota
  pool: 5
- username: root
- password: 
- host: 127.0.0.1
+ username: bachthinh
+ password: tokyo092015
+ host: btdevelop.c8wcfu2k8zwk.us-west-2.rds.amazonaws.com
  port: 3306

@@ -5,6 +5,7 @@ class Ability
     if user.admin?
       can [:manage], User
       can [:manage], Hero
+      can [:manage], Divide
     end
   end
 end

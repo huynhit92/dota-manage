@@ -2,9 +2,9 @@ development:
  adapter: mysql2
  encoding: utf8
  reconnect: false
- database: dota
+ database: sql690136
  pool: 5
- username: netmile
- password: netmile123
- host: dev-vpc.cb5wgkbfnfgu.ap-northeast-1.rds.amazonaws.com
+ username: sql690136
+ password: wJ4!hU2!
+ host: sql6.freemysqlhosting.net
  port: 3306

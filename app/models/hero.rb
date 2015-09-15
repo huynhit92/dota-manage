@@ -4,6 +4,7 @@ class Hero < ActiveRecord::Base
   STRENGTH = 1
   AGILITY = 2
   INTELLIGENT = 3
+  TYPES_LIST = [["STRENGTH", STRENGTH], ["AGILITY", AGILITY], ["INTELLIGENT", INTELLIGENT]]
 
   has_many :rel_hero_divides
   has_many :skills

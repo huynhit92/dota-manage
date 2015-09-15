@@ -1,0 +1,14 @@
+<%= form_for @q, url: heroes_list_ajax_path, method: :get, html: {class: "form-horizontal"}, remote: true do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.text_field :name_cont %>
+  <%= f.label :hero_type_eq %>
+  <%= f.select :hero_type_eq, Hero::TYPES_LIST %>
+  <%= f.submit "Search" %>
+<% end %>
+<% if @heroes.present? %>
+  <% @heroes.each do |hero| %>
+    <%= hero.name %>
+    <%= image_tag hero.img_path %>
+    <button type="button" class="ajax_choose btn btn-default" data-value="<%= hero.id %>" data-target="rel_hero_divide_hero_id">選択</button>
+  <% end %>
+<% end %>

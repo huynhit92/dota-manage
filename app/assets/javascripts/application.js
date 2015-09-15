@@ -12,6 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require nprogress
+//= require nprogress-turbolinks
+//= require nprogress-angular
 //= require bootstrap
 //= require turbolinks
+//= require angular
+//= require angular-resource
+//= require underscore
 //= require_tree .

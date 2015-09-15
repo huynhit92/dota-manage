@@ -11,5 +11,6 @@ module Dota
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     
     config.active_record.raise_in_transactional_callbacks = true
+    config.colorize_logging = true
   end
 end

@@ -2,9 +2,9 @@ development:
  adapter: mysql2
  encoding: utf8
  reconnect: false
- database: sql690136
+ database: dota
  pool: 5
- username: sql690136
- password: wJ4!hU2!
- host: sql6.freemysqlhosting.net
+ username: bachthinh
+ password: tokyo092015
+ host: btdevelop.c8wcfu2k8zwk.us-west-2.rds.amazonaws.com
  port: 3306

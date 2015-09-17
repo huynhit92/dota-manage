@@ -11,13 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
-//= require nprogress
-//= require nprogress-turbolinks
-//= require nprogress-angular
 //= require bootstrap
 //= require turbolinks
 //= require angular
 //= require angular-resource
+//= require nprogress
+//= require nprogress-turbolinks
+//= require nprogress-angular
 //= require underscore
 //= require_tree .

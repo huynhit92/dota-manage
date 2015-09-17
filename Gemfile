@@ -32,6 +32,7 @@ gem 'nprogress-rails'
 gem 'magic_userstamp', :git => "https://github.com/hokichaio/magic_userstamp.git"
 gem 'underscore-rails'
 gem 'angularjs-rails'
+gem 'jquery-ui-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

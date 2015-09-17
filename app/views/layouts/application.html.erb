@@ -14,13 +14,13 @@
     <div class="container">
       <div class="row">
         <%= render "layouts/navigation" %>
-        <div class="col-sm-3">
+        <div class="col-md-9" id="mainContent">
+          <span class="glyphicon glyphicon-th-list" id="magicCollapse" data-form="1"></span>
           <%= yield %>
         </div>
       </div>
     </div><!--/container-->
     <!-- /Main -->
-    <%= render "layouts/footer" %>
     <%= render "layouts/modal" %>
   <% else %>
     <%= yield %>

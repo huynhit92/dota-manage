@@ -12,6 +12,7 @@
  *
  *= require nprogress
 　*= require nprogress-bootstrap
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */

@@ -2,7 +2,10 @@ class HeroesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    
+    @heroes_strength = @heroes.list_strength
+    @heroes_agility = @heroes.list_agility
+    @heroes_inteligent = @heroes.list_inteligent
+
   end
   
   def new

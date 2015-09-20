@@ -1,3 +1,29 @@
-<% @heroes.each do |hero| %>
-  <%= image_tag hero.img_path %>
-<% end %>
+<div class="row">
+  <div class="col-sm-4">
+    <button type="button" class="btn btn-danger title">Strength</button></center>
+    <br/><br/>
+    <% @heroes_strength.each_with_index do |hero, index| %>
+        <% if index % 2 == 0 %><div class="row"><% end %>
+        <div class="col-xs-3"><%= image_tag hero.img_path %></div>
+        <% if index % 2 == 1 %></div><% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <button type="button" class="btn btn-success title">Agility</button>
+    <br/><br/>
+    <% @heroes_agility.each_with_index do |hero, index| %>
+        <% if index % 2 == 0 %><div class="row"><% end %>
+        <div class="col-xs-3"><%= image_tag hero.img_path %></div>
+        <% if index % 2 == 1 %></div><% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <button type="button" class="btn btn-primary title">Inteligent</button>
+    <br/><br/>
+    <% @heroes_inteligent.each_with_index do |hero, index| %>
+        <% if index % 2 == 0 %><div class="row"><% end %>
+        <div class="col-xs-3"><%= image_tag hero.img_path %></div>
+        <% if index % 2 == 1 %></div><% end %>
+    <% end %>
+  </div>
+</div>

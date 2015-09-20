@@ -5,6 +5,7 @@ class Hero < ActiveRecord::Base
   AGILITY = 2
   INTELIGENT = 3
   TYPES_LIST = [["STRENGTH", STRENGTH], ["AGILITY", AGILITY], ["INTELIGENT", INTELIGENT]]
+  IMG_PATH = "heroes/"
 
   has_many :rel_hero_divides
   has_many :skills
@@ -12,7 +13,7 @@ class Hero < ActiveRecord::Base
   enumerize :hero_type, in: {:strength => STRENGTH, :agility => AGILITY, :intelligent => INTELIGENT}, predicates: true
 
   def img_path
-    return "heroes/" + self.img_url
+    return IMG_PATH + self.img_url
   end
 
   scope :list_strength , -> { where(:hero_type => STRENGTH) }

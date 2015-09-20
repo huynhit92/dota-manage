@@ -1,4 +1,4 @@
-$ ->
+$(document).on 'ready page:load', ->
   NProgress.configure {
     showSpinner: true,
     ease: 'ease',
@@ -6,20 +6,17 @@ $ ->
   }
 
   menuForm1 = ->
-    console.log "form 1"
     $('#mainContent').switchClass('col-md-9', 'col-md-11')
     $('#navigation').switchClass('col-md-3', 'col-md-1')
     $('#navigation').find('.text').hide()
     $('#magicCollapse').data('form', 2)
   menuForm2 = ->
-    console.log "form 2"
     $('#mainContent').switchClass('col-md-11', 'col-md-12')
     $('#navigation').switchClass('col-md-1', '')
     $('#navigation').hide()
     # $('#navigation').find('.text').hide()
     $('#magicCollapse').data('form', 3)
   menuForm3 = ->
-    console.log "form 3"
     $('#mainContent').switchClass('col-md-12', 'col-md-9', ->
       $('#navigation').addClass('col-md-3')
       $('#navigation').show()

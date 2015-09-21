@@ -1,0 +1,18 @@
+---
+table_comments: {}
+column_comments:
+  heroes:
+    rcm_star: cap sao de nghi
+    get_start_dif: do kho nhap mon
+    grant_star_dif: do kho len sao
+    damage_point: sat thuong gay ra
+    team_support_point: ho tro nhom
+    str_point: chi so suc manh
+    int_point: chi so tri tue
+    agi_point: chi so man tiep
+    max_hp: hp toi da
+    physic_dmg: luc cong vat ly
+    magic_dmg: cuong do phep
+    magic_regist: khang phep
+    physic_shield: ho giap vat ly
+    physic_chaos: bao kich vat ly

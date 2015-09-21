@@ -1,4 +1,21 @@
+dotaModule = angular.module 'dotaModule', [
+    'ngResource'
+    'nprogress-rails'
+    'HeroModule'
+]
+
+dotaModule.run [
+  '$rootScope'
+  '$document'
+  '$compile'
+  ($rootScope, $document, $compile) ->
+
+]
+
 $(document).on 'ready page:load', ->
+
+  angular.bootstrap(document.body, ['dotaModule'])
+  $('[data-toggle="tooltip"]').tooltip()
 
   NProgress.configure {
     showSpinner: true,

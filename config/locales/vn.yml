@@ -1,0 +1,43 @@
+vn:
+  views:
+    pagination:
+      # first: "&laquo; 最初"
+      # last: "最終 &raquo;"
+      # previous: "&lsaquo; 前へ"
+      # next: "次へ &rsaquo;"
+      # truncate: "..."
+  activerecord:
+    models:
+      
+
+    attributes:
+      defaults: &defaults
+      created_by: 作成者
+      updated_by: 更新者
+      created_at: 作成日
+      updated_at: 更新日
+      lock_version: ロックバージョン
+
+      hero:
+        <<: *defaults
+        name: Tên
+        description: Giới Thiệu
+        attributes: Thuộc tính
+        grown: Tăng trưởng
+        str_point: Sức mạnh
+        int_point: Trí tuệ
+        agi_point: Mẫn
+        max_hp: HP tối đa
+        physic_dmg: Lực công kích vật lý
+        magic_dmg: Cường độ phép
+        magic_regist: Kháng phép
+        physic_shield: Hộ giáp vật lý
+        physic_chaos: Bạo kích vật lý
+        
+
+        
+
+
+
+
+        

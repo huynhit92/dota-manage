@@ -12,12 +12,12 @@ admins.each do |admin|
 end
 
 heroes= [
- { name: "Abaddon", hero_type: Hero::STRENGTH, description: "abaddon", img_url: "abaddon.png"},
- { name: "Phoenix", hero_type: Hero::STRENGTH, description: "phoenix", img_url: "phoenix.png"},
- { name: "Akasha", hero_type: Hero::INTELIGENT, description: "akasha", img_url: "akasha.png"},
- { name: "Kael", hero_type: Hero::INTELIGENT, description: "kael", img_url: "kael.png"},
- { name: "Mirana", hero_type: Hero::AGILITY, description: "mirana", img_url: "mirana.png"},
- { name: "Phantom", hero_type: Hero::AGILITY, description: "phantom", img_url: "phantom.png"}
+ { name: "Abaddon",position: 1, hero_type: Hero::STRENGTH, description: "abaddon", img_url: "abaddon.png"},
+ { name: "Phoenix",position: 1, hero_type: Hero::STRENGTH, description: "phoenix", img_url: "phoenix.png"},
+ { name: "Akasha",position: 1, hero_type: Hero::INTELIGENT, description: "akasha", img_url: "akasha.png"},
+ { name: "Kael",position: 1, hero_type: Hero::INTELIGENT, description: "kael", img_url: "kael.png"},
+ { name: "Mirana",position: 1, hero_type: Hero::AGILITY, description: "mirana", img_url: "mirana.png"},
+ { name: "Phantom",position: 1, hero_type: Hero::AGILITY, description: "phantom", img_url: "phantom.png"}
 ]
 
 heroes.each do |hero|

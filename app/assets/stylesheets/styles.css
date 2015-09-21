@@ -39,3 +39,78 @@ footer {
   font-size: 3.2em;
   padding:5px;
 }
+
+.sprite-bor1 {
+  background-position: -260px -1337px;
+  width: 70px;
+  height: 70px;
+}
+
+.sprite-bor2 {
+  background-position: -157px -1495px;
+  width: 70px;
+  height: 70px;
+}
+
+.sprite-bor3 {
+    background-position: -2px -1497px;
+    width: 70px;
+    height: 70px;
+}
+
+.sprite-bor4 {
+  background-position: -229px -1553px;
+  width: 70px;
+  height: 70px;
+}
+
+.sprite-bor5 {
+    background-position: -74px -1567px;
+    width: 70px;
+    height: 70px;
+}
+
+.sprite-bor6 {
+    background-position: -146px -1567px;
+    width: 70px;
+    height: 70px;
+}
+
+.sprite-bor7 {
+    background-position: -2px -1569px;
+    width: 70px;
+    height: 70px;
+}
+.sprite-bor8 {
+    background-position: -218px -1625px;
+    width: 70px;
+    height: 70px;
+}
+
+.sprite-bor9 {
+    background-position: -74px -1639px;
+    width: 70px;
+    height: 70px;
+}
+
+.sprite-bor10 {
+    background-position: -260px -1409px;
+    width: 70px;
+    height: 70px;
+}
+
+.sprite-bor11 {
+    background-position: -85px -1423px;
+    width: 70px;
+    height: 70px;
+}
+.sprite-bor12 {
+    background-position: -157px -1423px;
+    width: 70px;
+    height: 70px;
+}
+.sprite-bor13 {
+    background-position: -229px -1481px;
+    width: 70px;
+    height: 70px;
+}

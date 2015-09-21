@@ -10,4 +10,16 @@ module ApplicationHelper
     end
     return ''
   end
+
+  def gen_hero_index(hero)
+    link_to hero_path(hero.id) do
+      image_tag hero.img_path, :class => "img_hero"
+    end
+  end
+
+  def gen_star(num)
+    for i in 1..5 do
+      concat image_tag (i <= num) ? 'star.png' : 'star-no.png'
+    end
+  end
 end

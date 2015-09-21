@@ -11,87 +11,118 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912043740) do
+ActiveRecord::Schema.define(version: 20150921042913) do
 
   create_table "divides", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.integer  "created_by", limit: 4
-    t.integer  "updated_by", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",         limit: 255,             null: false
+    t.integer  "created_by",   limit: 4
+    t.integer  "updated_by",   limit: 4
+    t.integer  "lock_version", limit: 4,   default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "heroes", force: :cascade do |t|
-    t.string   "name",        limit: 255,   default: "", null: false
-    t.integer  "hero_type",   limit: 4,     default: 1,  null: false
-    t.text     "description", limit: 65535
-    t.string   "img_url",     limit: 255,   default: "", null: false
-    t.integer  "created_by",  limit: 4
-    t.integer  "updated_by",  limit: 4
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-  end
-
-  create_table "item_sets", force: :cascade do |t|
-    t.integer  "rel_hero_divide_id", limit: 4, null: false
+    t.string   "name",               limit: 255,   default: "", null: false
+    t.integer  "hero_type",          limit: 4,     default: 1,  null: false
+    t.integer  "position",           limit: 4,                  null: false
+    t.text     "description",        limit: 65535
+    t.integer  "base_star",          limit: 4,                  null: false
+    t.integer  "rcm_star",           limit: 4,                  null: false, comment: "cap sao de nghi"
+    t.integer  "get_start_dif",      limit: 4,                  null: false, comment: "do kho nhap mon"
+    t.integer  "grant_star_dif",     limit: 4,                  null: false, comment: "do kho len sao"
+    t.integer  "damage_point",       limit: 4,                  null: false, comment: "sat thuong gay ra"
+    t.integer  "team_support_point", limit: 4,                  null: false, comment: "ho tro nhom"
+    t.integer  "str_point",          limit: 4,                  null: false, comment: "chi so suc manh"
+    t.integer  "int_point",          limit: 4,                  null: false, comment: "chi so tri tue"
+    t.integer  "agi_point",          limit: 4,                  null: false, comment: "chi so man tiep"
+    t.integer  "max_hp",             limit: 4,                  null: false, comment: "hp toi da"
+    t.integer  "physic_dmg",         limit: 4,                  null: false, comment: "luc cong vat ly"
+    t.integer  "magic_dmg",          limit: 4,                  null: false, comment: "cuong do phep"
+    t.integer  "magic_regist",       limit: 4,                  null: false, comment: "khang phep"
+    t.integer  "physic_shield",      limit: 4,                  null: false, comment: "ho giap vat ly"
+    t.integer  "physic_chaos",       limit: 4,                  null: false, comment: "bao kich vat ly"
+    t.string   "img_url",            limit: 255,   default: "", null: false
     t.integer  "created_by",         limit: 4
     t.integer  "updated_by",         limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "lock_version",       limit: 4,     default: 0
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  add_index "heroes", ["base_star"], name: "index_heroes_on_base_star", using: :btree
+  add_index "heroes", ["get_start_dif"], name: "index_heroes_on_get_start_dif", using: :btree
+  add_index "heroes", ["grant_star_dif"], name: "index_heroes_on_grant_star_dif", using: :btree
+  add_index "heroes", ["hero_type"], name: "index_heroes_on_hero_type", using: :btree
+  add_index "heroes", ["position"], name: "index_heroes_on_position", using: :btree
+  add_index "heroes", ["rcm_star"], name: "index_heroes_on_rcm_star", using: :btree
+
+  create_table "item_sets", force: :cascade do |t|
+    t.integer  "rel_hero_divide_id", limit: 4,             null: false
+    t.integer  "created_by",         limit: 4
+    t.integer  "updated_by",         limit: 4
+    t.integer  "lock_version",       limit: 4, default: 0
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_index "item_sets", ["rel_hero_divide_id"], name: "index_item_sets_on_rel_hero_divide_id", using: :btree
 
   create_table "items", force: :cascade do |t|
-    t.text     "name",       limit: 65535, null: false
-    t.string   "img_url",    limit: 255,   null: false
-    t.integer  "created_by", limit: 4
-    t.integer  "updated_by", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "name",         limit: 65535,             null: false
+    t.string   "img_url",      limit: 255,               null: false
+    t.integer  "created_by",   limit: 4
+    t.integer  "updated_by",   limit: 4
+    t.integer  "lock_version", limit: 4,     default: 0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4,                null: false
-    t.string   "content",    limit: 255, default: "", null: false
-    t.integer  "created_by", limit: 4
-    t.integer  "updated_by", limit: 4
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "user_id",      limit: 4,                null: false
+    t.string   "content",      limit: 255, default: "", null: false
+    t.integer  "created_by",   limit: 4
+    t.integer  "updated_by",   limit: 4
+    t.integer  "lock_version", limit: 4,   default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "rel_hero_divides", force: :cascade do |t|
-    t.integer  "hero_id",    limit: 4, null: false
-    t.integer  "divide_id",  limit: 4, null: false
-    t.integer  "created_by", limit: 4
-    t.integer  "updated_by", limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "hero_id",      limit: 4,             null: false
+    t.integer  "divide_id",    limit: 4,             null: false
+    t.integer  "created_by",   limit: 4
+    t.integer  "updated_by",   limit: 4
+    t.integer  "lock_version", limit: 4, default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "rel_hero_divides", ["hero_id", "divide_id"], name: "index_rel_hero_divides_on_hero_id_and_divide_id", using: :btree
 
   create_table "rel_set_items", force: :cascade do |t|
-    t.integer  "item_set_id", limit: 4, null: false
-    t.integer  "item_id",     limit: 4, null: false
-    t.integer  "created_by",  limit: 4
-    t.integer  "updated_by",  limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "item_set_id",  limit: 4,             null: false
+    t.integer  "item_id",      limit: 4,             null: false
+    t.integer  "created_by",   limit: 4
+    t.integer  "updated_by",   limit: 4
+    t.integer  "lock_version", limit: 4, default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "rel_set_items", ["item_set_id", "item_id"], name: "index_rel_set_items_on_item_set_id_and_item_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
-    t.integer  "hero_id",     limit: 4,     null: false
-    t.text     "description", limit: 65535, null: false
-    t.string   "img_url",     limit: 255,   null: false
-    t.integer  "created_by",  limit: 4
-    t.integer  "updated_by",  limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "hero_id",      limit: 4,                 null: false
+    t.text     "description",  limit: 65535,             null: false
+    t.string   "img_url",      limit: 255,               null: false
+    t.integer  "created_by",   limit: 4
+    t.integer  "updated_by",   limit: 4
+    t.integer  "lock_version", limit: 4,     default: 0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "skills", ["hero_id"], name: "index_skills_on_hero_id", using: :btree
@@ -102,6 +133,7 @@ ActiveRecord::Schema.define(version: 20150912043740) do
     t.integer  "role",               limit: 4,   default: 2,  null: false
     t.integer  "created_by",         limit: 4
     t.integer  "updated_by",         limit: 4
+    t.integer  "lock_version",       limit: 4,   default: 0
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
   end

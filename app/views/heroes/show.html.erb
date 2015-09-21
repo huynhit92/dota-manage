@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-sm-3">
+    <%= image_tag @hero.img_path, :class => "img_hero_detail" %><br/>
+    <h1><%= @hero.name.upcase %></h1>
+    <p class="base_star"><% gen_star(@hero.base_star) %></p>
+  </div>
+  <div class="col-sm-9 basic-hero-info">
+    <h1>Description</h1>
+    <div><%= @hero.description %></div>
+  </div>
+</div>

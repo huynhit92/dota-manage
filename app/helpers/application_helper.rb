@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include HeroHelper
   def active_menu_resolver(args)
     args.each do |controller, actions|
       if controller.to_s == request.params[:controller]
@@ -9,12 +10,6 @@ module ApplicationHelper
       end
     end
     return ''
-  end
-
-  def gen_hero_index(hero)
-    link_to hero_path(hero.id) do
-      image_tag hero.img_path, :class => "img_hero"
-    end
   end
 
   def gen_star(num)

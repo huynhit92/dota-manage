@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921042913) do
+ActiveRecord::Schema.define(version: 20150921082728) do
 
   create_table "divides", force: :cascade do |t|
     t.string   "name",         limit: 255,             null: false
+    t.integer  "created_by",   limit: 4
+    t.integer  "updated_by",   limit: 4
+    t.integer  "lock_version", limit: 4,   default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  create_table "grown_level_masters", force: :cascade do |t|
+    t.string   "name",         limit: 255
     t.integer  "created_by",   limit: 4
     t.integer  "updated_by",   limit: 4
     t.integer  "lock_version", limit: 4,   default: 0
@@ -101,6 +110,22 @@ ActiveRecord::Schema.define(version: 20150921042913) do
   end
 
   add_index "rel_hero_divides", ["hero_id", "divide_id"], name: "index_rel_hero_divides_on_hero_id_and_divide_id", using: :btree
+
+  create_table "rel_hero_grown_levels", force: :cascade do |t|
+    t.integer  "hero_id",               limit: 4,              null: false
+    t.integer  "grown_level_master_id", limit: 4,              null: false
+    t.float    "str",                   limit: 24,             null: false
+    t.float    "int",                   limit: 24,             null: false
+    t.float    "agi",                   limit: 24,             null: false
+    t.integer  "created_by",            limit: 4
+    t.integer  "updated_by",            limit: 4
+    t.integer  "lock_version",          limit: 4,  default: 0
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "rel_hero_grown_levels", ["hero_id", "grown_level_master_id"], name: "index_rel_hero_grown_levels_on_hero_id_and_grown_level_master_id", unique: true, using: :btree
+  add_index "rel_hero_grown_levels", ["hero_id"], name: "index_rel_hero_grown_levels_on_hero_id", using: :btree
 
   create_table "rel_set_items", force: :cascade do |t|
     t.integer  "item_set_id",  limit: 4,             null: false

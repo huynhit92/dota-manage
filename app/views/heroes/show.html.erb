@@ -1,11 +1,97 @@
-<div class="row">
+<span id="data"
+  data-grown-levels="<%= @hero.gen_grown_levels_json %>">
+</span>
+<div class="row" ng-controller="HeroDetailCtrl" ng-init="init()">
   <div class="col-sm-3">
     <%= image_tag @hero.img_path, :class => "img_hero_detail" %><br/>
     <h1><%= @hero.name.upcase %></h1>
     <p class="base_star"><% gen_star(@hero.base_star) %></p>
   </div>
   <div class="col-sm-9 basic-hero-info">
-    <h1>Description</h1>
+    <h1><%= Hero.human_attribute_name(:description) %></h1>
     <div><%= @hero.description %></div>
+    <h1><%= Hero.human_attribute_name(:attributes) %></h1>
+    <div class="row">
+      <div class="col-xs-4">
+        <table>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:str_point) %>: </span></td>
+            <td><span class="text-red"><%= @hero.str_point %></span></td>
+          </tr>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:int_point) %>: </span></td>
+            <td><span class="text-blue"><%= @hero.int_point %></span></td>
+          </tr>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:agi_point) %>: </span></td>
+            <td><span class="text-green"><%= @hero.agi_point %></span></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-xs-4">
+        <table>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:max_hp) %>: </span></td>
+            <td><span><%= @hero.max_hp %></span></td>
+          </tr>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:physic_dmg) %>: </span></td>
+            <td><span><%= @hero.physic_dmg %></span></td>
+          </tr>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:magic_dmg) %>: </span></td>
+            <td><span><%= @hero.magic_dmg %></span></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-xs-4">
+        <table>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:magic_regist) %>: </span></td>
+            <td><span><%= @hero.magic_regist %></span></td>
+          </tr>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:physic_shield) %>: </span></td>
+            <td><span><%= @hero.physic_shield %></span></td>
+          </tr>
+          <tr>
+            <td><span class="hero-label"><%= Hero.human_attribute_name(:physic_chaos) %>: </span></td>
+            <td><span><%= @hero.physic_chaos %></span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <h1><%= Hero.human_attribute_name(:grown) %></h1>
+    <div class="hero-main clearfix">
+      <select ng-model="heroLevel" ng-options="level.id as level.name for level in LEVELS" ng-change="changeLevelData();" class="form-control">
+      </select>
+      <table class="table">
+        <tr>
+          <td><h3><i class="sprite-bgdsh">Lực</i></h3></td>
+          <td><h3><i class="sprite-bgdsh">Trí</i></h3></td>
+          <td><h3><i class="sprite-bgdsh">Mẫn</i></h3></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="progress progress-striped active">
+              <div id="strBar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%" data-toggle="tooltip" title="Hooray!">
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="progress progress-striped active">
+              <div id="intBar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%" data-toggle="tooltip" title="Hooray!">
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="progress progress-striped active">
+              <div id="agiBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%" data-toggle="tooltip" title="Hooray!">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 class Hero < ActiveRecord::Base
   extend Enumerize
+  include Rails.application.routes.url_helpers
 
   STRENGTH = 1
   AGILITY = 2
@@ -19,4 +20,5 @@ class Hero < ActiveRecord::Base
   scope :list_strength , -> { where(:hero_type => STRENGTH) }
   scope :list_agility , -> { where(:hero_type => AGILITY) }
   scope :list_inteligent , -> { where(:hero_type => INTELIGENT) }
+
 end

@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :content, :null => false, :default => ""
       t.integer :created_by         
       t.integer :updated_by
-      
+      t.integer :lock_version, :default => 0
       t.timestamps null: false
     end
     add_index :posts, :user_id

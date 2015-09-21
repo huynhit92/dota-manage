@@ -5,6 +5,7 @@ class CreateRelSetItems < ActiveRecord::Migration
       t.integer :item_id, :null => false
       t.integer :created_by         
       t.integer :updated_by
+      t.integer :lock_version, :default => 0
       
       t.timestamps null: false
     end

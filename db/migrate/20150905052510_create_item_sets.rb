@@ -4,6 +4,7 @@ class CreateItemSets < ActiveRecord::Migration
       t.integer :rel_hero_divide_id, :null => false
       t.integer :created_by         
       t.integer :updated_by
+      t.integer :lock_version, :default => 0
       
       t.timestamps null: false
     end

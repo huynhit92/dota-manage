@@ -6,6 +6,30 @@
     <%= image_tag @hero.img_path, :class => "img_hero_detail" %><br/>
     <h1><%= @hero.name.upcase %></h1>
     <p class="base_star"><% gen_star(@hero.base_star) %></p>
+    <p class="position">Vị trí: <%= @hero.position %></p>
+    <br>
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="rcm_star" style="font-size:12px">Cấp sao đề nghị: </td>
+        <td><% gen_star_small(@hero.rcm_star) %></td>
+      </tr>
+      <tr>
+        <td class="get_start_dif" style="font-size:12px">Độ khó nhập môn: </td>
+        <td><% gen_star_small(@hero.get_start_dif) %></td>
+      </tr>
+      <tr>
+        <td class="grant_star_dif" style="font-size:12px">Độ khó lên sao: </td>
+        <td><% gen_star_small(@hero.grant_star_dif) %></td>
+      </tr>
+      <tr>
+        <td class="damage_point" style="font-size:12px">Sát thương gây ra: </td>
+        <td><% gen_star_small(@hero.damage_point) %></td>
+      </tr>
+      <tr>
+        <td class="team_support_point" style="font-size:12px">Hỗ trợ nhóm: </td>
+        <td><% gen_star_small(@hero.team_support_point) %></td>
+      </tr>
+    </table>
   </div>
   <div class="col-sm-9 basic-hero-info">
     <h1><%= Hero.human_attribute_name(:description) %></h1>
@@ -92,6 +116,32 @@
           </td>
         </tr>
       </table>
+    </div>
+    <div class="row hero-content">
+      <h2 class="title">
+        <i class="sprite-title8">ANH HÙNG TIẾN GIỚI</i>
+      </h2>
+      <div class="tiengioi">
+        <% Divide.all.each do |d| %>
+          <div class="col-xs-6 tgbox clearfix">
+            <div class="hrim pull-left">
+              <div class="bor">
+                <i class="sprite-bor<%= d.id %>"></i>
+              </div>
+              <%= image_tag @hero.img_path %>
+            </div>
+            <div class="vpham pull-left">
+							<div class="row">
+							  <% for i in 0..5 %>
+							    <div class="col-xs-4 divide-item">
+							      <%= image_tag @hero.img_path, size: "46" %>
+						      </div>
+							  <% end %>
+							</div> 
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@
         <%= Divide.find(rel_hero_divide.divide_id).name %>
         <br>
         <div class="bor">
-          <i class="sprite-bor1"></i>
+          <i class="sprite-bor<%= rel_hero_divide.divide_id %>"></i>
         </div>
         <%= image_tag Hero.find(rel_hero_divide.hero_id).img_path %>
         <br>

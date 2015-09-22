@@ -17,4 +17,10 @@ module ApplicationHelper
       concat image_tag (i <= num) ? 'star.png' : 'star-no.png'
     end
   end
+  
+  def gen_star_small(num)
+    for i in 1..5 do
+      concat image_tag (i <= num) ? 'star.png' : 'star-no.png', :class => "star-bar"
+    end
+  end
 end

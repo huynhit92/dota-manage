@@ -6,6 +6,7 @@
 <% if @divides.present? %>
   <% @divides.each do |divide| %>
     <%= divide.name %>
-    <button type="button" class="ajax_choose btn btn-default" data-value="<%= divide.id %>" data-target="rel_hero_divide_divide_id">選択</button>
+    <span class="sprite-bor<%= divide.id %>"></span>
+    <button type="button" class="divide_choose btn btn-default" data-value="<%= divide.id %>" data-target="rel_hero_divide_divide_id" data-divide="hero_divide">選択</button>
   <% end %>
 <% end %>

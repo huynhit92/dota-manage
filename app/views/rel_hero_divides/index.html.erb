@@ -6,6 +6,11 @@
         -------
         <%= Divide.find(rel_hero_divide.divide_id).name %>
         <br>
+        <div class="bor">
+          <i class="sprite-bor1"></i>
+        </div>
+        <%= image_tag Hero.find(rel_hero_divide.hero_id).img_path %>
+        <br>
         <%= link_to "Edit", edit_rel_hero_divide_path(rel_hero_divide) %>
         <%= link_to "Remove", rel_hero_divide_path(rel_hero_divide), method: :delete,
                                        data: { confirm: "You sure?" } %>

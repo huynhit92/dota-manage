@@ -9,6 +9,6 @@
   <% @heroes.each do |hero| %>
     <%= hero.name %>
     <%= image_tag hero.img_path %>
-    <button type="button" class="ajax_choose btn btn-default" data-value="<%= hero.id %>" data-target="rel_hero_divide_hero_id">選択</button>
+    <button type="button" class="ajax_choose btn btn-default" data-value="<%= hero.id %>" data-img="<%= hero.img_path %>" data-target="rel_hero_divide_hero_id">選択</button>
   <% end %>
 <% end %>

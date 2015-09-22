@@ -28,7 +28,7 @@ class RelHeroDividesController < ApplicationController
   def update
     @rel_hero_divide = RelHeroDivide.find(params[:id])
     if @rel_hero_divide.update(rel_hero_divide_params)
-      redirect_to edit_rel_hero_divides(@rel_hero_divide), notice: "Update complete"
+      redirect_to edit_rel_hero_divide_path(@rel_hero_divide), notice: "Update complete"
     else
       render action: "edit"
       
@@ -45,7 +45,7 @@ class RelHeroDividesController < ApplicationController
   private
   
     def rel_hero_divide_params
-      params.require(:rel_hero_divide).permit(:hero_id, :divide_id)
+      params.require(:rel_hero_divide).permit(:hero_id, :divide_id, :lock_version)
     end
   
 end

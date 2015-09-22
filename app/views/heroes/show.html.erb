@@ -6,6 +6,30 @@
     <%= image_tag @hero.img_path, :class => "img_hero_detail" %><br/>
     <h1><%= @hero.name.upcase %></h1>
     <p class="base_star"><% gen_star(@hero.base_star) %></p>
+    <p class="position">Vị trí: <%= @hero.position %></p>
+    <br>
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="rcm_star" style="font-size:12px">Cấp sao đề nghị: </td>
+        <td><% gen_star_small(@hero.rcm_star) %></td>
+      </tr>
+      <tr>
+        <td class="get_start_dif" style="font-size:12px">Độ khó nhập môn: </td>
+        <td><% gen_star_small(@hero.get_start_dif) %></td>
+      </tr>
+      <tr>
+        <td class="grant_star_dif" style="font-size:12px">Độ khó lên sao: </td>
+        <td><% gen_star_small(@hero.grant_star_dif) %></td>
+      </tr>
+      <tr>
+        <td class="damage_point" style="font-size:12px">Sát thương gây ra: </td>
+        <td><% gen_star_small(@hero.damage_point) %></td>
+      </tr>
+      <tr>
+        <td class="team_support_point" style="font-size:12px">Hỗ trợ nhóm: </td>
+        <td><% gen_star_small(@hero.team_support_point) %></td>
+      </tr>
+    </table>
   </div>
   <div class="col-sm-9 basic-hero-info">
     <h1><%= Hero.human_attribute_name(:description) %></h1>
@@ -93,5 +117,15 @@
         </tr>
       </table>
     </div>
+    <h1>_________________________</h1>
+    <div class="row">
+      <% Divide.all.each do |d| %>
+        <div class="row-xs-6">
+          <%= d.id %>
+          <span class="sprite-bor10"><%= d.name %></span>
+        </div>
+      <% end %>
+    </div>
   </div>
+    <h1>++++++++++++++++++++++++++</h1>
 </div>

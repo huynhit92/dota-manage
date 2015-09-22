@@ -6,6 +6,7 @@ class Ability
       can [:manage], User
       can [:manage], Hero
       can [:manage], Divide
+      can [:manage], Item
     end
   end
 end

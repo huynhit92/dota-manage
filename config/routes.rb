@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   end
   get 'divides_list_ajax' => "divides#list_ajax"
 
+  resources :items
 end

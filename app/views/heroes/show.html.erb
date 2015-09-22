@@ -117,15 +117,31 @@
         </tr>
       </table>
     </div>
-    <h1>_________________________</h1>
-    <div class="row">
-      <% Divide.all.each do |d| %>
-        <div class="row-xs-6">
-          <%= d.id %>
-          <span class="sprite-bor10"><%= d.name %></span>
-        </div>
-      <% end %>
+    <div class="row hero-content">
+      <h2 class="title">
+        <i class="sprite-title8">ANH HÙNG TIẾN GIỚI</i>
+      </h2>
+      <div class="tiengioi">
+        <% Divide.all.each do |d| %>
+          <div class="col-xs-6 tgbox clearfix">
+            <div class="hrim pull-left">
+              <div class="bor">
+                <i class="sprite-bor<%= d.id %>"></i>
+              </div>
+              <%= image_tag @hero.img_path %>
+            </div>
+            <div class="vpham pull-left">
+							<div class="row">
+							  <% for i in 0..5 %>
+							    <div class="col-xs-4 divide-item">
+							      <%= image_tag @hero.img_path, size: "46" %>
+						      </div>
+							  <% end %>
+							</div> 
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-    <h1>++++++++++++++++++++++++++</h1>
 </div>

@@ -182,3 +182,40 @@ footer {
   border: 2px solid;
   border-radius: 10px;
 }
+
+.sprite-orange-sm {
+    background-position: -208px -1697px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+.sprite-white-sm {
+    background-position: -2px -1703px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+.sprite-green-sm {
+    background-position: -2px -1641px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+.sprite-blue-sm {
+    background-position: -146px -1639px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+.sprite-purple-sm {
+    background-position: -270px -1697px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+.item-list {
+  position: relative;
+}
+.vpds{
+  padding: 10px;
+}

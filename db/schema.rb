@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922020349) do
+ActiveRecord::Schema.define(version: 20150922013047) do
 
   create_table "divides", force: :cascade do |t|
     t.string   "name",         limit: 255,             null: false
@@ -80,14 +80,11 @@ ActiveRecord::Schema.define(version: 20150922020349) do
   create_table "items", force: :cascade do |t|
     t.text     "name",           limit: 65535,             null: false
     t.integer  "required_level", limit: 4,                 null: false
-    t.string   "max_hp",         limit: 255
-    t.string   "precisely",      limit: 255
-    t.string   "physic",         limit: 255
-    t.string   "dodge",          limit: 255
-    t.string   "made_of",        limit: 255
-    t.integer  "can_create",     limit: 4
-    t.string   "hero_use",       limit: 255
-    t.string   "receive_method", limit: 255
+    t.text     "description",    limit: 65535
+    t.text     "made_of",        limit: 65535
+    t.text     "can_create",     limit: 65535
+    t.text     "hero_use",       limit: 65535
+    t.text     "receive_method", limit: 65535
     t.string   "img_url",        limit: 255,               null: false
     t.integer  "created_by",     limit: 4
     t.integer  "updated_by",     limit: 4

@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20150922013047) do
     t.text     "hero_use",       limit: 65535
     t.text     "receive_method", limit: 65535
     t.integer  "quality",        limit: 4
-    t.integer  "type",           limit: 4
+    t.integer  "item_type",      limit: 4
     t.string   "img_url",        limit: 255,               null: false
     t.integer  "created_by",     limit: 4
     t.integer  "updated_by",     limit: 4

@@ -13,15 +13,17 @@
     </div>
   <% end %>
   
-  <%= f.number_field :hero_id %>
-
-  <%= link_to 'Choose Hero', heroes_list_ajax_path, {:remote => true, :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', "data-target" => "#modal"} %>
+  <%= f.number_field :hero_id, :type => 'hidden' %>
+  <%= image_tag :img_path, :id => 'hero_image', :style => 'display:none' %>
+  
+  <%= link_to 'Choose Hero', heroes_list_ajax_path, {:remote => true, :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', "data-target" => "#modal", "data-img" => "#modal"} %>
 
   </button>
   
-  <%= f.number_field :divide_id %>
+  <%= f.number_field :divide_id, :type => 'hidden' %>
+  <span id="hero_divide"></span>
   
-  <%= link_to 'Choose Divide', divides_list_ajax_path, {:remote => true, :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', "data-target" => "#modal"} %>
+  <%= link_to 'Choose Divide', divides_list_ajax_path, {:remote => true, :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', "data-target" => "#modal", "data-divide" => "#modal"} %>
 
   </button>
   

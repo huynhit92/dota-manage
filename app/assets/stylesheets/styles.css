@@ -120,3 +120,65 @@ footer {
     width: 120px;
     height: 55px;
 }
+
+.star-bar {
+    width: 17px;
+    height: 16px;
+}
+
+.sprite-title8 {
+    background-position: -2px -677px;
+    width: 276px;
+    height: 66px;
+}
+.hero-content h2.title {
+    font-size: 24px;
+    font-family: "Eremitage";
+    margin-bottom: 25px;
+    margin-top: 40px;
+    color: #2e1c04;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+.tgbox {
+    padding: 17px 18px;
+    border: 1px dashed #af8e61;
+}
+.hrim {
+    padding: 20px 15px;
+    position: relative;
+    margin-right: 2px;
+}
+.pull-left {
+    float: left !important;
+}
+
+.tiengioi {
+    margin-left: 30px;  
+}
+
+.tiengioi .vpham {
+    height: 110px;
+    width: 174px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.vp {
+    padding: 4px 6px;
+    position: relative;
+    float: left;
+}
+.vp .vbor {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+}
+.divide-item{
+  padding: 5px;
+  
+}
+.divide-item img{
+  border: 2px solid;
+  border-radius: 10px;
+}

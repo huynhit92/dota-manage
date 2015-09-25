@@ -1,23 +1,24 @@
-<span id="data" data-items="<%= @items.to_json %>"></span>
+<span id="data" data-items="<%= @items.to_json(:methods => [:img_path, :get_color]) %>"></span>
 <div class="row" ng-controller="ItemCtrl" ng-init="init()">
-  <table class="table table-condensed">
+  <table class="table table-condensed table-item-list">
     <tr>
-      <th><%= Item.human_attribute_name(:name) %></th>
       <th><%= Item.human_attribute_name(:img_url) %></th>
+      <th><%= Item.human_attribute_name(:name) %></th>
       <th><%= Item.human_attribute_name(:required_level) %></th>
       <th><%= Item.human_attribute_name(:item_type) %></th>
       <th></th>
     </tr>
     <tr ng-repeat="item in items">
+      <td><img ng-src="{{ item.img_path }}" /></td>
       <td>{{ item.name }}</td>
-      <td><img ng-src="{{ item.img_path}}"/></td>
       <td>{{ item.required_level }}</td>
-      <td></td>
+      <td class="background-{{ item.item_type }}"></td>
       <td>
-        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" ng-click="edit(account)">
-          編集
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal" ng-click="edit(item)">
+          Edit
         </button>
       </td>
     </tr>
   </table>
+  <%= render 'modal' %>
 </div>

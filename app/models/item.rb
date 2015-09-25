@@ -14,17 +14,18 @@ class Item < ActiveRecord::Base
     "purple" => PURPLE,
     "orange" => ORANGE 
   }
-  IMG_PATH = "items/"
+  IMG_PATH = "assets/items/"
 
   has_many :rel_set_items
 
-  enumerize :item_type, in: {:white => WHITE, :green => GREEN, :blue => BLUE, :purple => PURPLE, :orange => ORANGE}, predicates: true
+  # enumerize :item_type, in: {:white => WHITE, :green => GREEN, :blue => BLUE, :purple => PURPLE, :orange => ORANGE}, predicates: true
 
   def img_path
-    return IMG_PATH + self.img_url
+    return IMG_PATH + img_url
   end
 
   def get_color
     return TYPE_MASTERS.key(self.item_type)
   end
+
 end

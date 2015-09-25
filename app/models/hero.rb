@@ -39,4 +39,6 @@ class Hero < ActiveRecord::Base
     }
     return data.to_json
   end
+
+  
 end

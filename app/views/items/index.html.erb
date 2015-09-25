@@ -1,7 +1,23 @@
-<div class="row">
-  <% @items.each do |item| %>
-    <div class="col-sm-2 vpds">
-      <%= gen_item_index(item) %>
-    </div>
-  <% end %>
+<span id="data" data-items="<%= @items.to_json %>"></span>
+<div class="row" ng-controller="ItemCtrl" ng-init="init()">
+  <table class="table table-condensed">
+    <tr>
+      <th><%= Item.human_attribute_name(:name) %></th>
+      <th><%= Item.human_attribute_name(:img_url) %></th>
+      <th><%= Item.human_attribute_name(:required_level) %></th>
+      <th><%= Item.human_attribute_name(:item_type) %></th>
+      <th></th>
+    </tr>
+    <tr ng-repeat="item in items">
+      <td>{{ item.name }}</td>
+      <td><img ng-src="{{ item.img_path}}"/></td>
+      <td>{{ item.required_level }}</td>
+      <td></td>
+      <td>
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" ng-click="edit(account)">
+          編集
+        </button>
+      </td>
+    </tr>
+  </table>
 </div>

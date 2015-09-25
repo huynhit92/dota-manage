@@ -1,5 +1,4 @@
 class Item < ActiveRecord::Base
-
   extend Enumerize
   include Rails.application.routes.url_helpers
 
@@ -8,16 +7,16 @@ class Item < ActiveRecord::Base
   BLUE = 3
   PURPLE = 4
   ORANGE = 5
-  COLOR_MAPPING = {
-    WHITE => "white",
-    GREEN => "green",
-    BLUE => "blue",
-    PURPLE => "purple",
-    ORANGE => "orange"
+  TYPE_MASTERS = {
+    "white" => WHITE,
+    "green" => GREEN,
+    "blue" => BLUE,
+    "purple" => PURPLE,
+    "orange" => ORANGE 
   }
+  IMG_PATH = "items/"
 
   has_many :rel_set_items
-  IMG_PATH = "items/"
 
   enumerize :item_type, in: {:white => WHITE, :green => GREEN, :blue => BLUE, :purple => PURPLE, :orange => ORANGE}, predicates: true
 
@@ -26,19 +25,6 @@ class Item < ActiveRecord::Base
   end
 
   def get_color
-    case self.item_type
-    when WHITE
-      return COLOR_MAPPING[WHITE]
-    when GREEN
-      return COLOR_MAPPING[GREEN]
-    when BLUE
-      return COLOR_MAPPING[BLUE]
-    when PURPLE
-      return COLOR_MAPPING[PURPLE]
-    when ORANGE
-      return COLOR_MAPPING[ORANGE]
-    else
-      Rails.logger.debug("Error")
-    end
+    return TYPE_MASTERS.key(self.item_type)
   end
 end

@@ -7,6 +7,11 @@ class Hero < ActiveRecord::Base
   INTELIGENT = 3
   TYPES_LIST = [["STRENGTH", STRENGTH], ["AGILITY", AGILITY], ["INTELIGENT", INTELIGENT]]
   IMG_PATH = "heroes/"
+  TYPE_MASTERS = {
+    "STRENGTH" => STRENGTH,
+    "AGILITY" => AGILITY,
+    "INTELIGENT" => INTELIGENT
+  }
 
   has_many :rel_hero_divides
   has_many :skills

@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
     else
       @items = @items.none.page(params[:page])
     end
+    @files = Dir["#{Rails.root}/app/assets/images/items"]
   end
   
   def new
@@ -19,7 +20,8 @@ class ItemsController < ApplicationController
   end
   
   def create
-    if @item = Item.create(item_params)
+    # @item = Item.new(item_params)
+    if @item.save
       render json: @item, status: :created
     else
       render json: @item.errors.full_messages, status: :unprocessable_entity

@@ -16,10 +16,20 @@ controller.controller 'ItemCtrl', [
       $scope.save = (params) ->
         return if !params?
         if params.id?
-          console.log params
           Item.update(item: params).$promise.then ((value) ->
             angular.copy(value, item)
             $scope.item = angular.copy item
+            $scope.success = "Saved successfully"
+            $scope.errors = null
+            return
+          ), (error) ->
+            $scope.errors = error.data
+            $scope.success = null
+            return
+          return
+        else
+          Item.create(item: params).$promise.then ((value) ->
+            $scope.items.unshift value
             $scope.success = "Saved successfully"
             $scope.errors = null
             return

@@ -2,7 +2,12 @@ class ItemsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @items = @items.limit(10)
+    @q = Item.order(id: :desc).search(params[:q])
+    if(params[:q])
+      @items = @q.result(distinct: true).page(params[:page])
+    else
+      @items = @items.none.page(params[:page])
+    end
   end
   
   def new
@@ -14,11 +19,14 @@ class ItemsController < ApplicationController
   end
   
   def create
-    
+    if @item = Item.create(item_params)
+      render json: @item, status: :created
+    else
+      render json: @item.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   def update
-    Rails.logger.debug(item_params)
     if @item.update(item_params)
       render json: @item, status: :ok
     else

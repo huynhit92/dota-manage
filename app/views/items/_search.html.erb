@@ -1,0 +1,31 @@
+<%= search_form_for @q, :url => items_path, :html => { :method => :get, :class => 'form-horizontal' } do |f| %>
+  <section class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="col-lg-4 control-label"><%= Item.human_attribute_name(:name) %></label>
+          <div class="col-lg-8">
+            <%= f.text_field :name_cont, { :class => "form-control" }%>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-4 control-label"><%= Item.human_attribute_name(:required_level) %></label>
+          <div class="col-lg-8">
+            <%= f.text_field :required_level_eq, { :class => "form-control" }%>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-4 control-label"><%= Item.human_attribute_name(:description) %></label>
+          <div class="col-lg-8">
+            <%= f.text_field :description_cont, { :class => "form-control" }%>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-10 col-sm-10">
+            <%= f.submit 'Search', :class => "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

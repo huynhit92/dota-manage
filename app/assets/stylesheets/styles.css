@@ -219,3 +219,21 @@ footer {
 .vpds{
   padding: 10px;
 }
+.table-item-list td {
+  vertical-align: middle !important;
+}
+.table-item-list .background-1 {
+  background-color: white;
+}
+.table-item-list .background-2 {
+  background-color: green;
+}
+.table-item-list .background-3 {
+  background-color: blue;
+}
+.table-item-list .background-4 {
+  background-color: purple;
+}
+.table-item-list .background-5 {
+  background-color: orange;
+}

@@ -55,3 +55,7 @@ group :development, :test do
   gem 'spring'
 end
 
+group :unix do
+  gem 'unicorn-rails'
+  gem 'therubyracer'
+end

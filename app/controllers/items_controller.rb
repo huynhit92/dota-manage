@@ -2,8 +2,13 @@ class ItemsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @items = @items.limit(10)
-    Rails.logger.debug("dsadsa")
+    @q = Item.order(id: :desc).search(params[:q])
+    if(params[:q])
+      @items = @q.result(distinct: true).page(params[:page])
+    else
+      @items = @items.none.page(params[:page])
+    end
+    @files = Dir["#{Rails.root}/app/assets/images/items"]
   end
   
   def new
@@ -15,17 +20,24 @@ class ItemsController < ApplicationController
   end
   
   def create
-    
+    # @item = Item.new(item_params)
+    if @item.save
+      render json: @item, status: :created
+    else
+      render json: @item.errors.full_messages, status: :unprocessable_entity
+    end
   end
-  
-  def edit
-    
-  end
-  
+
   def update
-    
+    if @item.update(item_params)
+      render json: @item, status: :ok
+    else
+      render json: @item.errors.full_messages, status: :unprocessable_entity
+    end
   end
   
   private
-  
+  def item_params
+    params.require(:item).permit(:name, :required_level, :description, :made_of, :can_create, :hero_use, :receive_method, :quality, :item_type, :img_url, :lock_version, :created_at, :updated_at)
+  end
 end

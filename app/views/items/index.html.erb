@@ -1,7 +1,38 @@
-<div class="row">
-  <% @items.each do |item| %>
-    <div class="col-sm-2 vpds">
-      <%= gen_item_index(item) %>
+<%= render 'search' %>
+<span id="data" data-items="<%= @items.to_json(:methods => [:img_path, :get_color]) %>"></span>
+<div class="row" ng-controller="ItemCtrl" ng-init="init()">
+  <div style="text-align: right">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modal" ng-click="edit()"><i class="glyphicon glyphicon-plus"></i></button>
+  </div>
+  <span ng-show="items.length > 0">
+    <div class="row">
+      <div class="col-md-8"><%= paginate @items %></div>
+      <div class="col-md-4" style="margin-top:30px;"><%= page_entries_info @items %></div>
     </div>
-  <% end %>
+    <table class="table table-condensed table-item-list">
+      <tr>
+        <th><%= Item.human_attribute_name(:img_url) %></th>
+        <th><%= Item.human_attribute_name(:name) %></th>
+        <th><%= Item.human_attribute_name(:required_level) %></th>
+        <th><%= Item.human_attribute_name(:item_type) %></th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="item in items">
+        <td><img ng-src="{{ item.img_path }}" /></td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.required_level }}</td>
+        <td class="background-{{ item.item_type }}"></td>
+        <td>
+          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal" ng-click="edit(item)">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+        </td>
+      </tr>
+    </table>
+    <div class="row">
+      <div class="col-md-8"><%= paginate @items %></div>
+      <div class="col-md-4" style="margin-top:30px;"><%= page_entries_info @items %></div>
+    </div>
+  </span>
+  <%= render 'modal' %>
 </div>

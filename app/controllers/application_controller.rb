@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   before_filter :set_user
-  after_filter :reset_user
+  after_filter :reset_user, :set_csrf_cookie_for_ng
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -16,19 +16,19 @@ class ApplicationController < ActionController::Base
     else
       user_id = User.new
     end
-    User.model_stamper  
+    User.model_stamper
     User.stamper = user_id
   end
 
-  def set_csrf_cookie_for_ng
-   cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
-  end
-  
   def reset_user
     User.model_stamper
     User.reset_stamper
   end
   
+  def set_csrf_cookie_for_ng
+   cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
+
   protected
   # In Rails 4.2 and above
   def verified_request?

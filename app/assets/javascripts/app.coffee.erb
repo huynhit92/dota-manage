@@ -1,15 +1,25 @@
 dotaModule = angular.module 'dotaModule', [
     'ngResource'
     'nprogress-rails'
+    'Services'
     'HeroModule'
+    'ItemModule'
 ]
+
+dotaModule.constant "Constant",
+  masters: <%= MASTERS.to_json %>
 
 dotaModule.run [
   '$rootScope'
+  'Constant'
   '$document'
   '$compile'
-  ($rootScope, $document, $compile) ->
-
+  ($rootScope, Constant, $document, $compile) ->
+    invertedMasters = {}
+    _.each(Constant.masters, (v, k) ->
+      invertedMasters[k] = _.invert(v)
+    )
+    $rootScope.MASTERS = invertedMasters
 ]
 
 $(document).on 'ready page:load', ->

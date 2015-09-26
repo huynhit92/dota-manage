@@ -29,7 +29,8 @@ $(document).on 'ready page:load', ->
       divideId = $(this).data('divide-id')
       $.get "/hero_test?id=#{heroId}",  (data) ->
         console.log data
-        $('#modal').find('.modal-body').text(data)
+        
+        $('#modal').find('.modal-body').html(data)
         $('#modal').modal()
       
       

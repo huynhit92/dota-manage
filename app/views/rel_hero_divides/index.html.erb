@@ -1,5 +1,5 @@
 <h1>Hero and Divide</h1>
-<%= form_for @q, url: rel_hero_divides_path, method: :get, html: {class: "form-horizontal"}, remote: true do |f| %>
+<%= form_for @q, url: rel_hero_divides_path, method: :get, html: {class: "form-horizontal"} do |f| %>
   <%= f.label :hero_id_eq %>
   <%= f.number_field :hero_id_eq %>
   <%= f.label :divide_id_eq %>
@@ -7,5 +7,154 @@
   <%= f.submit "Search" %>
 <% end %>
 <div id="search_result"></div>
+<% if @rel_hero_divides.present? %>
+  <div class="row">
+    <% @rel_hero_divides.each do |rel| %>
+    
+      <% hero = Hero.find(rel.hero_id) %>
+      
+      <div id="hero_info<%= rel.divide_id %>_<%= rel.hero_id %>" style="display:none">
+          <% Rails.logger.debug("MODALLLLLLLLLLLLLLLLLLLL") %>
+          <span id="data"
+            data-grown-levels="<%= hero.gen_grown_levels_json %>">
+          </span>
+          <div class="row" ng-controller="HeroDetailCtrl" ng-init="init()">
+            <div class="col-sm-3">
+              <%= image_tag hero.img_path, :class => "img_hero_detail" %><br/>
+              <h1><%= hero.name.upcase %></h1>
+              <p class="base_star"><% gen_star(hero.base_star) %></p>
+              <p class="position">Vị trí: <%= hero.position %></p>
+              <br>
+              <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="rcm_star" style="font-size:12px">Cấp sao đề nghị: </td>
+                  <td><% gen_star_small(hero.rcm_star) %></td>
+                </tr>
+                <tr>
+                  <td class="get_start_dif" style="font-size:12px">Độ khó nhập môn: </td>
+                  <td><% gen_star_small(hero.get_start_dif) %></td>
+                </tr>
+                <tr>
+                  <td class="grant_star_dif" style="font-size:12px">Độ khó lên sao: </td>
+                  <td><% gen_star_small(hero.grant_star_dif) %></td>
+                </tr>
+                <tr>
+                  <td class="damage_point" style="font-size:12px">Sát thương gây ra: </td>
+                  <td><% gen_star_small(hero.damage_point) %></td>
+                </tr>
+                <tr>
+                  <td class="team_support_point" style="font-size:12px">Hỗ trợ nhóm: </td>
+                  <td><% gen_star_small(hero.team_support_point) %></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-9 basic-hero-info">
+              <h1><%= Hero.human_attribute_name(:description) %></h1>
+              <div><%= hero.description %></div>
+              <h1><%= Hero.human_attribute_name(:attributes) %></h1>
+              <div class="row">
+                <div class="col-xs-4">
+                  <table>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:str_point) %>: </span></td>
+                      <td><span class="text-red"><%= hero.str_point %></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:int_point) %>: </span></td>
+                      <td><span class="text-blue"><%= hero.int_point %></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:agi_point) %>: </span></td>
+                      <td><span class="text-green"><%= hero.agi_point %></span></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-xs-4">
+                  <table>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:max_hp) %>: </span></td>
+                      <td><span><%= hero.max_hp %></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:physic_dmg) %>: </span></td>
+                      <td><span><%= hero.physic_dmg %></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:magic_dmg) %>: </span></td>
+                      <td><span><%= hero.magic_dmg %></span></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-xs-4">
+                  <table>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:magic_regist) %>: </span></td>
+                      <td><span><%= hero.magic_regist %></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:physic_shield) %>: </span></td>
+                      <td><span><%= hero.physic_shield %></span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="hero-label"><%= Hero.human_attribute_name(:physic_chaos) %>: </span></td>
+                      <td><span><%= hero.physic_chaos %></span></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <h1><%= Hero.human_attribute_name(:grown) %></h1>
+              <div class="hero-main clearfix">
+                <select ng-model="heroLevel" ng-options="level.id as level.name for level in LEVELS" ng-change="changeLevelData();" class="form-control">
+                </select>
+                <table class="table">
+                  <tr>
+                    <td><h3><i class="sprite-bgdsh">Lực</i></h3></td>
+                    <td><h3><i class="sprite-bgdsh">Trí</i></h3></td>
+                    <td><h3><i class="sprite-bgdsh">Mẫn</i></h3></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="progress progress-striped active">
+                        <div id="strBar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%" data-toggle="tooltip" title="Hooray!">
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-striped active">
+                        <div id="intBar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%" data-toggle="tooltip" title="Hooray!">
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-striped active">
+                        <div id="agiBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%" data-toggle="tooltip" title="Hooray!">
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      <div class="col-xs-4">
+        <div class="bor" id="rel_result<%= rel.divide_id %>_<%= rel.hero_id %>">
+          <i class="sprite-bor<%= rel.divide_id %>"></i>
+        </div>
+        <%= image_tag Hero.find(rel.hero_id).img_path %>
+        <script>
+        $(document).ready(function(){
+          $('#rel_result<%= rel.divide_id %>_<%= rel.hero_id %>').on('click', function(){
+            $("#modal").modal();
+            $('#modal').find('.modal-body').empty().append($("#hero_info<%= rel.divide_id %>_<%= rel.hero_id %>").show());
+          });
+        });
+        </script>
+        
+      </div>
+    <% end %>
+  </div>
+<% end %>
 <br>
 <%= link_to "Add new", new_rel_hero_divide_path %>

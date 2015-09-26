@@ -2,12 +2,10 @@ class RelHeroDividesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @q = RelHeroDivide.all.ransack(params[:q])
+    @q = @rel_hero_divides.includes(:hero).ransack(params[:q])
     if params[:q].present?
-      Rails.logger.debug("Chuan cmnr")
       @rel_hero_divides = @q.result(distinct: true).page(params[:page])
     else
-      Rails.logger.debug("Sai cmnr")
       @rel_hero_divides = @rel_hero_divides.none.page(params[:page])
     end
   end

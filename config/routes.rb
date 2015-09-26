@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get 'rel_hero_divides_list_rel' => "rel_hero_divides#list_rel"
   
   resources :items
+  get 'hero_test' => 'heroes#test'
 end

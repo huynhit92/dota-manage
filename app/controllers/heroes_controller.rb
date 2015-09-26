@@ -5,7 +5,6 @@ class HeroesController < ApplicationController
     @heroes_strength = @heroes.list_strength
     @heroes_agility = @heroes.list_agility
     @heroes_inteligent = @heroes.list_inteligent
-
   end
   
   def new
@@ -29,13 +28,16 @@ class HeroesController < ApplicationController
   end
   
   def list_ajax
-    Rails.logger.debug("COME IN HERE")
     @q = Hero.all.ransack(params[:q])
     if params[:q].present?
       @heroes = @q.result(distinct: true).page(params[:page])
     else
       @heroes = @heroes.none.page(params[:page])
     end
+  end
+
+  def test
+    render inline: Hero.find(params[:id]).to_json
   end
 
   private

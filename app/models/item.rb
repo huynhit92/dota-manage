@@ -19,7 +19,9 @@ class Item < ActiveRecord::Base
   has_many :rel_set_items
 
   # enumerize :item_type, in: {:white => WHITE, :green => GREEN, :blue => BLUE, :purple => PURPLE, :orange => ORANGE}, predicates: true
+  validates :name, presence: true
 
+  
   def img_path
     return IMG_PATH + img_url
   end

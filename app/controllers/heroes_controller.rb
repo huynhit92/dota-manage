@@ -37,7 +37,8 @@ class HeroesController < ApplicationController
   end
 
   def test
-    render inline: Hero.find(params[:id]).to_json
+    @hero = Hero.find(params[:id])
+    render partial: 'test', layout: false
   end
 
   private

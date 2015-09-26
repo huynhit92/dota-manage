@@ -28,9 +28,8 @@ $(document).on 'ready page:load', ->
       heroId = $(this).data('hero-id')
       divideId = $(this).data('divide-id')
       $.get "/hero_test?id=#{heroId}",  (data) ->
-        data = JSON.parse data
-        console.log $('<div>hjdksajkdasbhjdsa</div>')
-        $('#modal').append($('<div>hjdksajkdasbhjdsa</div>'))
+        console.log data
+        $('#modal').find('.modal-body').text(data)
         $('#modal').modal()
       
       

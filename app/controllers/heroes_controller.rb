@@ -2,32 +2,29 @@ class HeroesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @heroes_strength = @heroes.list_strength
-    @heroes_agility = @heroes.list_agility
-    @heroes_inteligent = @heroes.list_inteligent
+    
+  end
+
+  def new
 
   end
-  
-  def new
-    
-  end
-  
+
   def show
-    
+
   end
-  
+
   def create
-    
+
   end
-  
+
   def edit
-    
+
   end
-  
+
   def update
-    
+
   end
-  
+
   def list_ajax
     Rails.logger.debug("COME IN HERE")
     @q = Hero.all.ransack(params[:q])
@@ -39,5 +36,5 @@ class HeroesController < ApplicationController
   end
 
   private
-  
+
 end

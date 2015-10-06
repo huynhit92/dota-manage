@@ -1,0 +1,29 @@
+<div class="row hero-main clearfix">
+  <div class="col-sm-4">
+    <h3><i class="sprite-bgdsh">Lực</i></h3>
+    <br/><br/>
+    <% @heroes_strength.each_with_index do |hero, index| %>
+        <% if index % 2 == 0 %><div class="row hero-span"><% end %>
+        <div class="col-xs-6"><%= gen_hero_index(hero) %></div>
+        <% if index % 2 == 1 || @heroes_strength.size == 1 %></div><% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <h3><i class="sprite-bgdsh">Trí</i></h3>
+    <br/><br/>
+    <% @heroes_agility.each_with_index do |hero, index| %>
+        <% if index % 2 == 0 %><div class="row"><% end %>
+        <div class="col-xs-6"><%= gen_hero_index(hero) %></div>
+        <% if index % 2 == 1 || @heroes_agility.size == 1 %></div><% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <h3><i class="sprite-bgdsh">Mẫn</i></h3>
+    <br/><br/>
+    <% @heroes_inteligent.each_with_index do |hero, index| %>
+        <% if index % 2 == 0 %><div class="row"><% end %>
+        <div class="col-xs-6"><%= gen_hero_index(hero, index) %></div>
+        <% if index % 2 == 1 || @heroes_inteligent.size == 1 %></div><% end %>
+    <% end %>
+  </div>
+</div>

@@ -24,11 +24,11 @@ class Hero < ActiveRecord::Base
   scope :list_inteligent , -> { where(:hero_type => INTELIGENT) }
 
   def img_path
-    return IMG_PATH + self.img_url
+    return  "assets" + IMG_PATH + self.img_url
   end
 
   def gen_grown_levels_json
-    data = self.rel_hero_grown_levels.map{|i| 
+    data = self.rel_hero_grown_levels.map{|i|
       {
         :id => i.grown_level_master.id,
         :name => i.grown_level_master.name,
@@ -40,5 +40,5 @@ class Hero < ActiveRecord::Base
     return data.to_json
   end
 
-  
+
 end

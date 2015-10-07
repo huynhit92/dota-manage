@@ -22,11 +22,35 @@ controller.controller 'HeroDetailCtrl', [
 controller.controller 'HeroesCtrl', [
   '$scope'
   '$rootScope'
-  ($scope, $rootScope) ->
+  'Hero'
+  ($scope, $rootScope, Hero) ->
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
-      
+
     $scope.edit = (hero) ->
       $scope.hero = angular.copy hero
-      
+      $scope.success = null
+      $scope.errors = []
+
+      $scope.save = (params) ->
+        if params is undefined
+          $scope.errors.push = $scope.MESSAGES.fill_in_error
+          return
+        if params.id?
+          Hero.update(hero: params).$promise.then ((value) ->
+            hero = angular.copy value
+            angular.copy(value, $scope.hero)
+            $scope.success = $scope.MESSAGES.save_success
+            $scope.errors = null
+            return
+          ), (error) ->
+            $scope.errors = error.data
+            $scope.success = null
+            return
+          return
+
+
+
+
+
 ]

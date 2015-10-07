@@ -21,7 +21,13 @@ dotaModule.run [
       invertedMasters[k] = _.invert(v)
     )
     $rootScope.MASTERS = invertedMasters
+    $rootScope.MESSAGES = $rootScope.MASTERS.messages
 ]
+$(document).on 'page:fetch', ->
+  $('#mainContent').fadeOut 'slow'
+
+$(document).on 'page:restore', ->
+  $('#mainContent').fadeIn 'slow'
 
 $(document).on 'ready page:load', ->
 

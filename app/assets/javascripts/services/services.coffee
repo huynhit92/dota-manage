@@ -10,3 +10,14 @@ services.factory 'Item', [
       create:
         method: 'POST'
 ]
+
+services.factory 'Hero', [
+  '$resource'
+  ($resource) ->
+    $resource '/heroes/:id', {},
+      update:
+        method: 'PUT'
+        params: {id: '@hero.id'}
+      create:
+        method: 'POST'
+]

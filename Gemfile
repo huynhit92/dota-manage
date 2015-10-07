@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'cancancan', '~> 1.10'
-gem 'enumerize'
+# gem 'enumerize'
 gem 'ransack'
 gem 'kaminari'
 gem 'nprogress-rails'

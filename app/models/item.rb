@@ -1,5 +1,4 @@
 class Item < ActiveRecord::Base
-  extend Enumerize
   include Rails.application.routes.url_helpers
 
   WHITE = 1
@@ -12,7 +11,7 @@ class Item < ActiveRecord::Base
     "green" => GREEN,
     "blue" => BLUE,
     "purple" => PURPLE,
-    "orange" => ORANGE 
+    "orange" => ORANGE
   }
   IMG_PATH = "assets/items/"
 
@@ -21,7 +20,7 @@ class Item < ActiveRecord::Base
   # enumerize :item_type, in: {:white => WHITE, :green => GREEN, :blue => BLUE, :purple => PURPLE, :orange => ORANGE}, predicates: true
   validates :name, presence: true
 
-  
+
   def img_path
     return IMG_PATH + img_url
   end

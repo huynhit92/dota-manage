@@ -6,6 +6,12 @@
         <h4 class="modal-title" id="myModalLabel">ヒーロー詳細</h4>
       </div>
       <div class="modal-body">
+        <div class="alert alert-info fade in" role="alert" ng-show="success">{{ success }}</div>
+        <div class="alert alert-block alert-danger fade in" role="alert" ng-show="errors.length > 0">
+          <span ng-repeat="err in errors">
+            {{ err }}<br/>
+          </span>
+        </div>
         <form class="form-horizontal">
           <div class="form-group">
             <label class="col-sm-2 control-label"><%= Hero.human_attribute_name(:name) %></label>

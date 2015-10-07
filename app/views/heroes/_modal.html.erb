@@ -1,0 +1,30 @@
+<div class="modal fade" id="heroModal" tabindex="-1" role="dialog" aria-labelledby="heroEditModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">ヒーロー詳細</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= Hero.human_attribute_name(:name) %></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="<%= Hero.human_attribute_name(:name) %>" ng-model="hero.name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= Hero.human_attribute_name(:description) %></label>
+            <div class="col-sm-10">
+              <textarea rows="3" class="form-control" placeholder="<%= Hero.human_attribute_name(:description) %>" ng-model="hero.description"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">閉める</button>
+        <button type="button" class="btn btn-primary" ng-click="save(hero)">更新</button>
+      </div>
+    </div>
+  </div>
+</div

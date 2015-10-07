@@ -1,0 +1,33 @@
+ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最終 &raquo;"
+      previous: "&lsaquo; 前へ"
+      next: "次へ &rsaquo;"
+      truncate: "..."
+  activerecord:
+    models:
+      hero: ヒーロー
+      
+
+    attributes:
+      defaults: &defaults
+        created_by: 作成者
+        updated_by: 更新者
+        created_at: 作成日
+        updated_at: 更新日
+        lock_version: ロックバージョン
+        start_date: 開始日
+        end_date: 終了日
+        image: 画像
+        description: 説明
+        type: 種類
+
+      hero:
+        <<: *defaults
+        name: 名前
+        base_star: ベースレベル
+        type: 種類
+        position: 位置
+

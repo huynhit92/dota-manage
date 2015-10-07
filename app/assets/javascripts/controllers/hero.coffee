@@ -25,5 +25,8 @@ controller.controller 'HeroesCtrl', [
   ($scope, $rootScope) ->
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
-      console.log $scope.heroes
+      
+    $scope.edit = (hero) ->
+      $scope.hero = angular.copy hero
+      
 ]

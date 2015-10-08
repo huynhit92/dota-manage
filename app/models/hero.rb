@@ -11,6 +11,7 @@ class Hero < ActiveRecord::Base
     "AGILITY" => AGILITY,
     "INTELIGENT" => INTELIGENT
   }
+  IMAGES = Dir.glob("app/assets/images/heroes/*.png").map{|img| "assets/" + img.split('images/')[1]}
 
   has_many :rel_hero_divides
   has_many :skills

@@ -1,7 +1,9 @@
 <span id="data"
-  data-heroes="<%= @heroes.to_json(:methods => :attributes_json) %>" 
+  data-heroes="<%= @heroes.to_json(:methods => :attributes_json) %>"
+  data-images="<%= Hero::IMAGES %>"
   ></span>
 <h2>ヒーロー一覧</h2>
+
 <hr/>
 <span ng-init="init()" ng-controller="HeroesCtrl">
   <table class="table table-hover">

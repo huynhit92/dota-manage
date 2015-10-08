@@ -26,11 +26,25 @@ controller.controller 'HeroesCtrl', [
   ($scope, $rootScope, Hero) ->
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
+      $scope.images = $('#data').data 'images'
 
     $scope.edit = (hero) ->
+      $(".image-picker").imagepicker()
+
       $scope.hero = angular.copy hero
       $scope.success = null
       $scope.errors = []
+      $scope.chosen = false
+      $scope.heroImg = if hero then "assets/heroes/" + hero.img_url else ""
+
+      $scope.chooseImage = (hero) ->
+        $scope.chosen = true
+        $(".image_picker_selector").show()
+        $(".image_picker_selector").on 'click', '.selected' , ->
+          console.log ("ahiadshi")
+          return
+        return
+
 
       $scope.save = (params) ->
         if params is undefined

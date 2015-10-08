@@ -37,7 +37,7 @@ class HeroesController < ApplicationController
   private
     def hero_params
       params.require(:hero).permit(:name, :hero_type, :hero_type, :position, :description, :base_star, :rcm_star, :get_start_dif, :grant_star_dif,
-      :damage_point, :team_support_point, :str_point, :int_point, :agi_point, :max_hp, :physic_dmg, :magic_dmg, :magic_resist, :physic_shield, :physic_chaos,
+      :damage_point, :team_support_point, :str_point, :int_point, :agi_point, :max_hp, :physic_dmg, :magic_dmg, :magic_regist, :physic_shield, :physic_chaos,
       :img_url, :lock_version, :created_at, :updated_at)
     end
 end

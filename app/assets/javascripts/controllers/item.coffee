@@ -30,7 +30,6 @@ controller.controller 'ItemCtrl', [
             return
           return
         else
-          console.log "dafuq"
           Item.create(item: params).$promise.then ((value) ->
             $scope.items.unshift value
             $scope.success = "Saved successfully"

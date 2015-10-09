@@ -24,6 +24,7 @@ controller.controller 'HeroesCtrl', [
   '$rootScope'
   'Hero'
   ($scope, $rootScope, Hero) ->
+
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
       $scope.images = $('#data').data 'images'
@@ -35,13 +36,18 @@ controller.controller 'HeroesCtrl', [
       $scope.success = null
       $scope.errors = []
       $scope.chosen = false
-      $scope.heroImg = if hero then "assets/heroes/" + hero.img_url else ""
+      $scope.heroImg = if hero then hero.attributes_json.img_path else ""
 
-      $scope.chooseImage = (hero) ->
+      $scope.chooseImage = () ->
         $scope.chosen = true
+        $(".thumbnail").removeClass('selected')
+        $(".image_picker_selector").find("img[src$='#{$scope.heroImg}']").closest('.thumbnail').addClass('selected')
         $(".image_picker_selector").show()
-        $(".image_picker_selector").on 'click', '.selected' , ->
-          console.log ("ahiadshi")
+        $(".image_picker_selector").on 'dblclick', 'li' , ->
+          $scope.heroImg = $(this).find('.image_picker_image').attr('src')
+          $scope.hero.img_url = $scope.heroImg.split('heroes/')[1]
+          $scope.$apply()
+          $(".image_picker_selector").hide()
           return
         return
 
@@ -52,8 +58,10 @@ controller.controller 'HeroesCtrl', [
           return
         if params.id?
           Hero.update(hero: params).$promise.then ((value) ->
-            hero = angular.copy value
-            angular.copy(value, $scope.hero)
+            angular.copy value, hero
+            $scope.hero = angular.copy hero
+            console.log hero.attributes_json.img_path
+            console.log hero.attributes_json.hero_position
             $scope.success = $scope.MESSAGES.save_success
             $scope.errors = null
             return

@@ -240,3 +240,6 @@ footer {
 .image_picker_selector {
   display: none;
 }
+.image_picker_selector li{
+  cursor: pointer;
+}

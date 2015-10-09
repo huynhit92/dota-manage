@@ -63,6 +63,14 @@
                 <input type="text" class="form-control" placeholder="<%= Hero.human_attribute_name(:team_support_point) %>" ng-model="hero.team_support_point">
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"><%= Hero.human_attribute_name(:img_url) %></label>
+              <div class="col-sm-8">
+                <input type="text" style="display:none" class="form-control" ng-model="hero.img_url">
+                <img ng-src="{{heroImg}}"/>
+                <button class="btn btn-primary btn-xs" ng-click="chooseImage()">選択</button>
+              </div>
+            </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
@@ -120,11 +128,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-4 control-label"><%= Hero.human_attribute_name(:img_url) %></label>
+              <label class="col-sm-4 control-label"><%= Hero.human_attribute_name(:position) %></label>
               <div class="col-sm-8">
-                <input type="text" style="display:none" class="form-control" ng-model="hero.img_url">
-                <img ng-src="{{heroImg}}"/>
-                <button class="btn btn-primary btn-xs" ng-click="chooseImage(hero)">Choose Image</button>
+                <input type="text" class="form-control" placeholder="<%= Hero.human_attribute_name(:position) %>" ng-model="hero.position">
               </div>
             </div>
           </div>

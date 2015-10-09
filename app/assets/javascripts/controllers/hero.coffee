@@ -25,6 +25,8 @@ controller.controller 'HeroesCtrl', [
   'Hero'
   ($scope, $rootScope, Hero) ->
 
+    console.log $scope.MASTERS
+
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
       $scope.images = $('#data').data 'images'

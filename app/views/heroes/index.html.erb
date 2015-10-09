@@ -22,7 +22,7 @@
       <td data-toggle="tooltip" data-placement="top" data-container="body" title="{{ hero.description }}">{{ hero.description | cut:true:50:' ...' }}</td>
       <td>{{ hero.hero_type }}</td>
       <td>{{ hero.base_star }}</td>
-      <td>{{ hero.attributes_json.hero_position }}</td>
+      <td>{{ MASTERS.hero_positions[hero.position] }}</td>
       <td>
         <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#heroModal" ng-click="edit(hero)">編集</button>
         <a class="btn btn-primary btn-xs" ng-href="heroes/{{ hero.id }}">詳細</a>

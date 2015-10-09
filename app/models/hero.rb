@@ -6,11 +6,8 @@ class Hero < ActiveRecord::Base
 
   TYPES_LIST = [["STRENGTH", STRENGTH], ["AGILITY", AGILITY], ["INTELIGENT", INTELIGENT]]
   IMG_PATH = "heroes/"
-  TYPE_MASTERS = {
-    "STRENGTH" => STRENGTH,
-    "AGILITY" => AGILITY,
-    "INTELIGENT" => INTELIGENT
-  }
+  TYPE_MASTERS = {"STRENGTH" => STRENGTH,"AGILITY" => AGILITY,"INTELIGENT" => INTELIGENT}
+  POSITION_MASTERS = {"前" => 1,"中" => 2,"後" => 3}
   IMAGES = Dir.glob("app/assets/images/heroes/*.png").map{|img| "assets/" + img.split('images/')[1]}
 
   has_many :rel_hero_divides

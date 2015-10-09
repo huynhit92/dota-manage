@@ -11,8 +11,9 @@
  * file per style scope.
  *
  *= require nprogress
-　*= require nprogress-bootstrap
+ *= require nprogress-bootstrap
  *= require jquery-ui
+ *= require_tree ../../../lib
  *= require_tree .
  *= require_self
  */

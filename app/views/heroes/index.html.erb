@@ -1,29 +1,33 @@
-<div class="row hero-main clearfix">
-  <div class="col-sm-4">
-    <h3><i class="sprite-bgdsh">Lực</i></h3>
-    <br/><br/>
-    <% @heroes_strength.each_with_index do |hero, index| %>
-        <% if index % 2 == 0 %><div class="row hero-span"><% end %>
-        <div class="col-xs-6"><%= gen_hero_index(hero) %></div>
-        <% if index % 2 == 1 || @heroes_strength.size == 1 %></div><% end %>
-    <% end %>
-  </div>
-  <div class="col-sm-4">
-    <h3><i class="sprite-bgdsh">Trí</i></h3>
-    <br/><br/>
-    <% @heroes_agility.each_with_index do |hero, index| %>
-        <% if index % 2 == 0 %><div class="row"><% end %>
-        <div class="col-xs-6"><%= gen_hero_index(hero) %></div>
-        <% if index % 2 == 1 || @heroes_agility.size == 1 %></div><% end %>
-    <% end %>
-  </div>
-  <div class="col-sm-4">
-    <h3><i class="sprite-bgdsh">Mẫn</i></h3>
-    <br/><br/>
-    <% @heroes_inteligent.each_with_index do |hero, index| %>
-        <% if index % 2 == 0 %><div class="row"><% end %>
-        <div class="col-xs-6"><%= gen_hero_index(hero, index) %></div>
-        <% if index % 2 == 1 || @heroes_inteligent.size == 1 %></div><% end %>
-    <% end %>
-  </div>
-</div>
+<span id="data"
+  data-heroes="<%= @heroes.to_json(:methods => :attributes_json) %>"
+  data-images="<%= Hero::IMAGES %>"
+  ></span>
+<h2>ヒーロー一覧</h2>
+
+<hr/>
+<span ng-init="init()" ng-controller="HeroesCtrl">
+  <table class="table table-hover">
+    <tr>
+      <th><%= Hero.human_attribute_name(:name) %></th>
+      <th><%= Hero.human_attribute_name(:image) %></th>
+      <th><%= Hero.human_attribute_name(:description) %></th>
+      <th><%= Hero.human_attribute_name(:type) %></th>
+      <th><%= Hero.human_attribute_name(:base_star) %></th>
+      <th><%= Hero.human_attribute_name(:position) %></th>
+      <th>操作</th>
+    </tr>
+    <tr ng-repeat="hero in heroes">
+      <td>{{ hero.name }}</td>
+      <td><img ng-src="{{ hero.attributes_json.img_path }}"/></td>
+      <td data-toggle="tooltip" data-placement="top" data-container="body" title="{{ hero.description }}">{{ hero.description | cut:true:50:' ...' }}</td>
+      <td>{{ hero.hero_type }}</td>
+      <td>{{ hero.base_star }}</td>
+      <td>{{ hero.attributes_json.hero_position }}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#heroModal" ng-click="edit(hero)">編集</button>
+        <a class="btn btn-primary btn-xs" ng-href="heroes/{{ hero.id }}">詳細</a>
+      </td>
+    </tr>
+  </table>
+  <%= render "heroes/modal" %>
+</span>

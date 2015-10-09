@@ -4,6 +4,7 @@ dotaModule = angular.module 'dotaModule', [
     'Services'
     'HeroModule'
     'ItemModule'
+    'Filters'
 ]
 
 dotaModule.constant "Constant",
@@ -20,12 +21,18 @@ dotaModule.run [
       invertedMasters[k] = _.invert(v)
     )
     $rootScope.MASTERS = invertedMasters
+    $rootScope.MESSAGES = $rootScope.MASTERS.messages
 ]
+$(document).on 'page:fetch', ->
+  $('#mainContent').fadeOut 'slow'
+
+$(document).on 'page:restore', ->
+  $('#mainContent').fadeIn 'slow'
 
 $(document).on 'ready page:load', ->
 
   angular.bootstrap(document.body, ['dotaModule'])
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip container: 'body'
 
   NProgress.configure {
     showSpinner: true,

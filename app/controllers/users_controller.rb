@@ -9,11 +9,11 @@ class UsersController < ApplicationController
       @users = @users.none.page(params[:page])
     end
   end
-  
+
   def show
     #automatic generate by cancan
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save

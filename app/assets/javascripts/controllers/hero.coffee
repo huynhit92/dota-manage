@@ -25,8 +25,6 @@ controller.controller 'HeroesCtrl', [
   'Hero'
   ($scope, $rootScope, Hero) ->
 
-    console.log $scope.MASTERS
-
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
       $scope.images = $('#data').data 'images'
@@ -53,7 +51,6 @@ controller.controller 'HeroesCtrl', [
           return
         return
 
-
       $scope.save = (params) ->
         if params is undefined
           $scope.errors.push = $scope.MESSAGES.fill_in_error
@@ -62,8 +59,6 @@ controller.controller 'HeroesCtrl', [
           Hero.update(hero: params).$promise.then ((value) ->
             angular.copy value, hero
             $scope.hero = angular.copy hero
-            console.log hero.attributes_json.img_path
-            console.log hero.attributes_json.hero_position
             $scope.success = $scope.MESSAGES.save_success
             $scope.errors = null
             return
@@ -72,9 +67,13 @@ controller.controller 'HeroesCtrl', [
             $scope.success = null
             return
           return
-
-
-
-
+        else
+          Hero.create(hero: params).$promise.then ( (value) ->
+            $scope.hero = angular.copy value
+            $scope.heroes.push value
+            $scope.success = $scope.MESSAGES.save_success
+          ), (error) ->
+            $scope.errors = error.data
+            $scope.success = null
 
 ]

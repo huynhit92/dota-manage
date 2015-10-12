@@ -2,7 +2,12 @@ class HeroesController < ApplicationController
   load_and_authorize_resource
 
   def index
-
+    @q = Hero.order(id: :desc).search(params[:q])
+    if(params[:q])
+      @heroes = @q.result(distinct: true).page(params[:page])
+    else
+      @heroes = @heroes.none.page(params[:page])
+    end
   end
 
   def show
@@ -10,7 +15,11 @@ class HeroesController < ApplicationController
   end
 
   def create
-
+    if @hero.save
+      render json: @hero.to_json(:methods => :attributes_json), status: :ok
+    else
+      render json: @hero.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   def edit

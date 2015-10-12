@@ -9,6 +9,10 @@
     <button class="btn btn-primary" data-toggle="modal" data-target="#heroModal" ng-click="edit()"><i class="glyphicon glyphicon-plus"></i></button>
   </div>
   <br/>
+  <div class="row">
+    <div class="col-md-8"><%= paginate @heroes %></div>
+    <div class="col-md-4" style="margin-bottom:30px;"><%= page_entries_info @heroes %></div>
+  </div>
   <table class="table table-hover">
     <tr>
       <th><%= Hero.human_attribute_name(:name) %></th>
@@ -32,5 +36,9 @@
       </td>
     </tr>
   </table>
+  <div class="row">
+    <div class="col-md-8"><%= paginate @heroes %></div>
+    <div class="col-md-4" style="margin-top:30px;"><%= page_entries_info @heroes %></div>
+  </div>
   <%= render "heroes/modal" %>
 </div>

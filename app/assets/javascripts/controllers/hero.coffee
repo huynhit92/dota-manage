@@ -23,20 +23,23 @@ controller.controller 'HeroesCtrl', [
   '$scope'
   '$rootScope'
   'Hero'
-  ($scope, $rootScope, Hero) ->
+  'RelHeroGrownLevel'
+  ($scope, $rootScope, Hero, RelHeroGrownLevel) ->
 
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
       $scope.images = $('#data').data 'images'
 
     $scope.edit = (hero) ->
+      console.log hero
+
       $(".image-picker").imagepicker()
 
       $scope.hero = angular.copy hero
       $scope.success = null
       $scope.errors = []
       $scope.chosen = false
-      $scope.heroImg = if hero then hero.attributes_json.img_path else ""
+      $scope.heroImg = if hero then hero.methods_json.img_path else ""
 
       $scope.chooseImage = () ->
         $scope.chosen = true
@@ -75,5 +78,34 @@ controller.controller 'HeroesCtrl', [
           ), (error) ->
             $scope.errors = error.data
             $scope.success = null
+            return
+          return
+        return
+
+      $scope.saveRelGrownLevel = (params) ->
+        RelHeroGrownLevel.update(rel_hero_grown_level: params, hero_id: hero.id).$promise.then ((value) ->
+          angular.copy value, params
+          $scope.level = angular.copy params
+          $scope.success = $scope.MESSAGES.save_success
+          $scope.errors = null
+          return
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
+
+      $scope.createRelGrownLevel = (params) ->
+        params.hero_id = hero.id
+        RelHeroGrownLevel.create(rel_hero_grown_level: params, hero_id: hero.id).$promise.then ( (value) ->
+          $scope.new_level = null
+          $scope.hero.rel_hero_grown_levels.push value
+          $scope.success = $scope.MESSAGES.save_success
+          return
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
 
 ]

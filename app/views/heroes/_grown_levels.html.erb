@@ -1,0 +1,34 @@
+<table class="table table-hover">
+  <tr>
+    <td></td>
+    <td>Str</td>
+    <td>Int</td>
+    <td>Agi</td>
+  </tr>
+  <tr ng-repeat="level in hero.rel_hero_grown_levels">
+    <td>
+      {{level.grown_level_master.name}}
+      <button class="btn btn-primary btn-xs" ng-click="saveRelGrownLevel(level)">変更</button>
+    </td>
+    <td>
+      <input type="text input" style="width:50px" ng-model="level.str">
+    </td>
+    <td>
+      <input type="text input" style="width:50px" ng-model="level.int">
+    </td>
+    <td>
+      <input type="text input" style="width:50px" ng-model="level.agi">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <select ng-options="k*1 as v for (k, v) in MASTERS.grown_level_masters" ng-model="new_level.grown_level_master_id">
+        <option value="">選択</option>
+      </select>
+      <button class="btn btn-primary btn-xs" ng-click="createRelGrownLevel(new_level)">作成</button>
+    </td>
+    <td><input type="text" class="form-control" style="width:50px" ng-model="new_level.str"></td>
+    <td><input type="text" class="form-control" style="width:50px" ng-model="new_level.int"></td>
+    <td><input type="text" class="form-control" style="width:50px" ng-model="new_level.agi"></td>
+  </tr>
+</table>

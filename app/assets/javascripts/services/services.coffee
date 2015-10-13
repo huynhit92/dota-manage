@@ -21,3 +21,18 @@ services.factory 'Hero', [
       create:
         method: 'POST'
 ]
+
+services.factory 'RelHeroGrownLevel', [
+  '$resource'
+  ($resource) ->
+    $resource '/heroes/:hero_id/rel_hero_grown_levels/:id', {},
+      update:
+        method: 'PUT'
+        params:
+          hero_id: '@hero_id'
+          id: '@rel_hero_grown_level.id'
+      create:
+        method: 'POST'
+        params:
+          hero_id: '@hero_id'
+]

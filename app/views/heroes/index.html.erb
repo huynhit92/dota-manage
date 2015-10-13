@@ -1,5 +1,5 @@
 <span id="data"
-  data-heroes="<%= @heroes.to_json(:methods => :attributes_json) %>"
+  data-heroes="<%= @heroes.to_json(Hero.compact_json) %>"
   data-images="<%= Hero::IMAGES %>"
   ></span>
 <h2>ヒーロー一覧</h2>
@@ -25,7 +25,7 @@
     </tr>
     <tr ng-repeat="hero in heroes">
       <td>{{ hero.name }}</td>
-      <td><img ng-src="{{ hero.attributes_json.img_path }}"/></td>
+      <td><img ng-src="{{ hero.methods_json.img_path }}"/></td>
       <td data-toggle="tooltip" data-placement="top" data-container="body" title="{{ hero.description }}">{{ hero.description | cut:true:50:' ...' }}</td>
       <td>{{ hero.hero_type }}</td>
       <td>{{ hero.base_star }}</td>
@@ -40,5 +40,5 @@
     <div class="col-md-8"><%= paginate @heroes %></div>
     <div class="col-md-4" style="margin-top:30px;"><%= page_entries_info @heroes %></div>
   </div>
-  <%= render "heroes/modal" %>
+  <%= render partial: "modal" %>
 </div>

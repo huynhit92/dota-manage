@@ -46,11 +46,22 @@ class Hero < ActiveRecord::Base
     return data.to_json
   end
 
-  def attributes_json
+  def methods_json
     return {
       :img_path => self.img_path,
       :hero_position => self.hero_position
     }
+  end
+
+  def self.compact_json
+    return {
+      :include => {
+        :rel_hero_grown_levels => {
+          :include => :grown_level_master
+        }
+     },
+     :methods => :methods_json
+   }
   end
 
 end

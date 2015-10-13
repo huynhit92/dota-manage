@@ -16,7 +16,7 @@ class HeroesController < ApplicationController
 
   def create
     if @hero.save
-      render json: @hero.to_json(:methods => :attributes_json), status: :ok
+      render json: @hero.to_json(Hero.compact_json), status: :ok
     else
       render json: @hero.errors.full_messages, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class HeroesController < ApplicationController
 
   def update
     if @hero.update(hero_params)
-      render json: @hero.to_json(:methods => :attributes_json), status: :ok
+      render json: @hero.to_json(Hero.compact_json), status: :ok
     else
       render json: @hero.errors.full_messages, status: :unprocessable_entity
     end

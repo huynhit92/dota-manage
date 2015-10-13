@@ -239,6 +239,7 @@ footer {
 }
 .image_picker_selector {
   display: none;
+  margin-left: 45px !important;
 }
 .image_picker_selector li{
   cursor: pointer;

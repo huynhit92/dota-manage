@@ -20,6 +20,14 @@ class RelHeroGrownLevelsController < ApplicationController
     end
   end
 
+  def destroy
+    if @rel_hero_grown_level.destroy
+      render json: {response: 'ok'}.to_json, status: :ok
+    else
+      render json: @rel_hero_grown_level.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
 
     def rel_hero_grown_level_params

@@ -96,11 +96,23 @@ controller.controller 'HeroesCtrl', [
         return
 
       $scope.createRelGrownLevel = (params) ->
-        params.hero_id = hero.id
-        RelHeroGrownLevel.create(rel_hero_grown_level: params, hero_id: hero.id).$promise.then ( (value) ->
-          $scope.new_level = null
+        params.hero_id = $scope.hero.id
+        RelHeroGrownLevel.create(rel_hero_grown_level: params, hero_id: $scope.hero.id).$promise.then ( (value) ->
+          $scope.new_level = {}
           $scope.hero.rel_hero_grown_levels.push value
           $scope.success = $scope.MESSAGES.save_success
+          return
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
+
+      $scope.deleteRelGrownLevel = (params, index) ->
+        RelHeroGrownLevel.delete(id: params.id, hero_id: hero.id).$promise.then ((value) ->
+          $scope.hero.rel_hero_grown_levels.splice(index, 1)
+          $scope.success = $scope.MESSAGES.save_success
+          $scope.errors = null
           return
         ), (error) ->
           $scope.errors = error.data

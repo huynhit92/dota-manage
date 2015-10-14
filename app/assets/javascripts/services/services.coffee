@@ -35,4 +35,9 @@ services.factory 'RelHeroGrownLevel', [
         method: 'POST'
         params:
           hero_id: '@hero_id'
+      delete:
+        method: 'DELETE'
+        params:
+          hero_id: '@hero_id'
+          id: '@rel_hero_grown_level.id'
 ]

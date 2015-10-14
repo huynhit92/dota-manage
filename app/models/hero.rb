@@ -6,13 +6,24 @@ class Hero < ActiveRecord::Base
 
   TYPES_LIST = [["STRENGTH", STRENGTH], ["AGILITY", AGILITY], ["INTELIGENT", INTELIGENT]]
   IMG_PATH = "heroes/"
-  TYPE_MASTERS = {"STRENGTH" => STRENGTH,"AGILITY" => AGILITY,"INTELIGENT" => INTELIGENT}
-  POSITION_MASTERS = {"前" => 1,"中" => 2,"後" => 3}
+  TYPE_MASTERS = {"STRENGTH" => STRENGTH, "AGILITY" => AGILITY, "INTELIGENT" => INTELIGENT}
+  POSITION_MASTERS = {"前" => 1, "中" => 2, "後" => 3}
   IMAGES = Dir.glob("app/assets/images/heroes/*.png").map{|img| "assets/" + img.split('images/')[1]}
 
   has_many :rel_hero_divides
   has_many :skills
   has_many :rel_hero_grown_levels
+
+  validates :name, :hero_type, :position, :description, :base_star, :rcm_star, :get_start_dif, :damage_point,
+            :team_support_point, :str_point, :int_point, :agi_point, :max_hp, :physic_dmg, :magic_dmg, :magic_regist,
+            :physic_shield, :physic_chaos, :img_url, presence: true
+
+  validates :hero_type, :position, :base_star, :rcm_star, :get_start_dif, :damage_point, :team_support_point, :str_point,
+            :int_point, :agi_point, :max_hp, :physic_dmg, :magic_dmg, :magic_regist,
+            :physic_shield, :physic_chaos, numericality: { only_integer: true }
+
+  validates :name, uniqueness: true
+  validates :img_url, uniqueness: true
 
   scope :list_strength , -> { where(:hero_type => STRENGTH) }
   scope :list_agility , -> { where(:hero_type => AGILITY) }

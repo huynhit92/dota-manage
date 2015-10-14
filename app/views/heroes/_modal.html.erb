@@ -64,8 +64,8 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-4 control-label"><%= Hero.human_attribute_name(:grown_levels) %></label>
-              <div class="col-sm-8">
+              <label class="col-xs-6 col-sm-4"><%= Hero.human_attribute_name(:grown_levels) %></label>
+              <div class="col-sm-12">
                 <%= render partial: "grown_levels" %>
               </div>
             </div>
@@ -137,13 +137,18 @@
                 <input type="text" style="display:none" class="form-control" ng-model="hero.img_url">
                 <img ng-src="{{heroImg}}"/>
                 <button class="btn btn-primary btn-xs" ng-click="chooseImage()">選択</button>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12 select-img-box">
+                <select class="image-picker show-html">
+                  <option ng-repeat="img in images" data-img-src="{{img}}" value="{{$index}}"> {{$index}}</option>
+                </select>
               </div>
             </div>
           </div>
         </form>
-        <select class="image-picker show-html">
-          <option ng-repeat="img in images" data-img-src="{{img}}" value="{{$index}}"> {{$index}}</option>
-        </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">閉める</button>

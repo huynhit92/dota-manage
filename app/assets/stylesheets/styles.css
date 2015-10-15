@@ -246,6 +246,5 @@ footer {
 }
 .select-img-box {
   overflow-x: scroll;
-  max-width: 450px;
   max-height: 330px;
 }

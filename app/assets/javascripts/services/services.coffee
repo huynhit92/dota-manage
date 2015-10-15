@@ -41,3 +41,23 @@ services.factory 'RelHeroGrownLevel', [
           hero_id: '@hero_id'
           id: '@rel_hero_grown_level.id'
 ]
+
+services.factory 'RelHeroDivide', [
+  '$resource'
+  ($resource) ->
+    $resource '/heroes/:hero_id/rel_hero_divides/:id', {},
+      update:
+        method: 'PUT'
+        params:
+          hero_id: '@hero_id'
+          id: '@rel_hero_divide.id'
+      create:
+        method: 'POST'
+        params:
+          hero_id: '@hero_id'
+      delete:
+        method: 'DELETE'
+        params:
+          hero_id: '@hero_id'
+          id: '@rel_hero_divide.id'
+]

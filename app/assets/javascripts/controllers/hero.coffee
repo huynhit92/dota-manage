@@ -24,14 +24,14 @@ controller.controller 'HeroesCtrl', [
   '$rootScope'
   'Hero'
   'RelHeroGrownLevel'
-  ($scope, $rootScope, Hero, RelHeroGrownLevel) ->
+  'RelHeroDivide'
+  ($scope, $rootScope, Hero, RelHeroGrownLevel, RelHeroDivide) ->
 
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
       $scope.images = $('#data').data 'images'
 
     $scope.edit = (hero) ->
-      console.log hero
 
       $(".image-picker").imagepicker()
 
@@ -119,5 +119,44 @@ controller.controller 'HeroesCtrl', [
           $scope.success = null
           return
         return
+
+      $scope.saveRelDivide = (params) ->
+        RelHeroDivide.update(rel_hero_divide: params, hero_id: hero.id).$promise.then ((value) ->
+          angular.copy value, params
+          $scope.level = angular.copy params
+          $scope.success = $scope.MESSAGES.save_success
+          $scope.errors = null
+          return
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
+
+      $scope.createRelDivide = (params) ->
+        params.hero_id = $scope.hero.id
+        RelHeroDivide.create(rel_hero_divide: params, hero_id: $scope.hero.id).$promise.then ( (value) ->
+          $scope.new_divide = {}
+          $scope.hero.rel_hero_divides.push value
+          $scope.success = $scope.MESSAGES.save_success
+          return
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
+
+      $scope.deleteRelDivide = (params, index) ->
+        RelHeroDivide.delete(id: params.id, hero_id: hero.id).$promise.then ((value) ->
+          $scope.hero.rel_hero_divides.splice(index, 1)
+          $scope.success = $scope.MESSAGES.save_success
+          $scope.errors = null
+          return
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
+
 
 ]

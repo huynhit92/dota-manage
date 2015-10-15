@@ -69,6 +69,9 @@ class Hero < ActiveRecord::Base
       :include => {
         :rel_hero_grown_levels => {
           :include => :grown_level_master
+        },
+        :rel_hero_divides => {
+          :include => :divide
         }
      },
      :methods => :methods_json

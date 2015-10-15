@@ -2,9 +2,9 @@
 <table class="table table-striped">
   <tr>
     <td width="25%"></td>
-    <td>Str</td>
-    <td>Int</td>
-    <td>Agi</td>
+    <td><%= RelHeroGrownLevel.human_attribute_name(:str) %></td>
+    <td><%= RelHeroGrownLevel.human_attribute_name(:int) %></td>
+    <td><%= RelHeroGrownLevel.human_attribute_name(:agi) %></td>
     <td width="25%"></td>
   </tr>
   <tr ng-repeat="level in hero.rel_hero_grown_levels">
@@ -12,13 +12,13 @@
       {{level.grown_level_master.name}}
     </td>
     <td>
-      <input type="text" class="form-control" style="width:50px" ng-model="level.str">
+      <input type="text" class="form-control" style="width:100px" ng-model="level.str">
     </td>
     <td>
-      <input type="text" class="form-control" style="width:50px" ng-model="level.int">
+      <input type="text" class="form-control" style="width:100px" ng-model="level.int">
     </td>
     <td>
-      <input type="text" class="form-control" style="width:50px" ng-model="level.agi">
+      <input type="text" class="form-control" style="width:100px" ng-model="level.agi">
     </td>
     <td>
       <button class="btn btn-primary btn-xs" ng-click="saveRelGrownLevel(level)">変更</button>
@@ -31,9 +31,9 @@
         <option value="">選択</option>
       </select>
     </td>
-    <td><input type="text" class="form-control" style="width:50px" ng-model="new_level.str"></td>
-    <td><input type="text" class="form-control" style="width:50px" ng-model="new_level.int"></td>
-    <td><input type="text" class="form-control" style="width:50px" ng-model="new_level.agi"></td>
+    <td><input type="text" class="form-control" style="width:100px" ng-model="new_level.str"></td>
+    <td><input type="text" class="form-control" style="width:100px" ng-model="new_level.int"></td>
+    <td><input type="text" class="form-control" style="width:100px" ng-model="new_level.agi"></td>
     <td><button class="btn btn-primary btn-xs" ng-click="createRelGrownLevel(new_level)">作成</button></td>
   </tr>
 </table>

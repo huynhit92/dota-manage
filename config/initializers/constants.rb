@@ -6,5 +6,6 @@ MASTERS = {
   :hero_types => Hero::TYPE_MASTERS,
   :item_types => Item::TYPE_MASTERS,
   :hero_positions => Hero::POSITION_MASTERS,
-  :grown_level_masters => GrownLevelMaster::MASTERS
+  :grown_level_masters => GrownLevelMaster::MASTERS,
+  :divide_masters => Divide::MASTERS
 }

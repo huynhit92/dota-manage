@@ -6,7 +6,7 @@
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">基本情報</a></li>
           <li role="presentation"><a href="#grownLevel" aria-controls="grownLevel" role="tab" data-toggle="tab"><%= Hero.human_attribute_name(:grown_levels) %></a></li>
-          <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+          <li role="presentation"><a href="#divides" aria-controls="divides" role="tab" data-toggle="tab"><%= Hero.human_attribute_name(:divides) %></a></li>
         </ul>
       </div>
       <div class="modal-body">
@@ -23,7 +23,9 @@
           <div role="tabpanel" class="tab-pane" id="grownLevel">
             <%= render 'heroes/grown_levels' %>
           </div>
-          <div role="tabpanel" class="tab-pane" id="messages">...</div>
+          <div role="tabpanel" class="tab-pane" id="divides">
+            <%= render 'heroes/divides' %>
+          </div>
         </div>
     </div>
   </div>

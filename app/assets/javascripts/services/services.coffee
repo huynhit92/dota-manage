@@ -9,6 +9,12 @@ services.factory 'Item', [
         params: {id: '@item.id'}
       create:
         method: 'POST'
+    $resource '/json/items&q=:name_cont', {}
+      # query:
+      #   method: 'GET'
+      #   params:
+      #     q:
+      #       # name_cont: '@name'
 ]
 
 services.factory 'Hero', [

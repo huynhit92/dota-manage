@@ -9,16 +9,21 @@ class ItemsController < ApplicationController
       @items = @items.none.page(params[:page])
     end
     @files = Dir["#{Rails.root}/app/assets/images/items"]
+    Rails.logger.debug(params[:q])
+    respond_to do |format|
+      format.html
+      format.json { render :json => @items }
+    end
   end
-  
+
   def new
-    
+
   end
-  
+
   def show
-    
+
   end
-  
+
   def create
     # @item = Item.new(item_params)
     if @item.save
@@ -35,7 +40,7 @@ class ItemsController < ApplicationController
       render json: @item.errors.full_messages, status: :unprocessable_entity
     end
   end
-  
+
   private
   def item_params
     params.require(:item).permit(:name, :required_level, :description, :made_of, :can_create, :hero_use, :receive_method, :quality, :item_type, :img_url, :lock_version, :created_at, :updated_at)

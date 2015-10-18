@@ -4,7 +4,8 @@ controller.controller 'RelSetItemCtrl', [
   '$scope'
   '$rootScope'
   'RelSetItem'
-  ($scope, $rootScope, RelSetItem) ->
+  'Item'
+  ($scope, $rootScope, RelSetItem, Item) ->
     $scope.init = ->
       $scope.rel_hero_divide = $('#data').data('rel')
       return
@@ -46,5 +47,12 @@ controller.controller 'RelSetItemCtrl', [
           return
           return
         return
+
+    $scope.searchItem = ->
+      return if $scope.itemSearch is undefined
+      console.log $scope.itemSearch
+      Item.query(name: $scope.itemSearch).$promise.then ( (value) ->
+        console.log value
+      )
 
 ]

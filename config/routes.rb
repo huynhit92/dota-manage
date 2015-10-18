@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :heroes do
     resources :rel_hero_divides do
       resources :item_sets do
-        # resources :rel_
+        resources :rel_set_items
       end
     end
     resources :rel_hero_grown_levels

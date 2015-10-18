@@ -72,8 +72,9 @@ controller.controller 'HeroesCtrl', [
           return
         else
           Hero.create(hero: params).$promise.then ( (value) ->
+            hero = angular.copy value
             $scope.hero = angular.copy value
-            $scope.heroes.push value
+            $scope.heroes.push hero
             $scope.success = $scope.MESSAGES.save_success
           ), (error) ->
             $scope.errors = error.data

@@ -62,18 +62,21 @@ services.factory 'RelHeroDivide', [
           id: '@rel_hero_divide.id'
 ]
 
-services.factory 'ItemSet', [
+services.factory 'RelSetItem', [
   '$resource'
   ($resource) ->
-    $resource '/heroes/:hero_id/rel_hero_divides/:rel_hero_divide_id/item_sets/:id', {},
+    $resource '/heroes/:hero_id/rel_hero_divides/:rel_hero_divide_id/item_sets/:item_set_id/rel_set_items/:id', {},
       update:
         method: 'PUT'
         params:
           hero_id: '@hero_id'
-          rel_hero_divide_id: '@rel_hero_divide.id'
+          rel_hero_divide_id: '@rel_hero_divide_id'
+          item_set_id: '@item_set_id'
+          id: '@rel_set_item.id'
       create:
         method: 'POST'
         params:
           hero_id: '@hero_id'
-          rel_hero_divide_id: '@rel_hero_divide.id'
+          rel_hero_divide_id: '@rel_hero_divide_id'
+          item_set_id: '@item_set_id'
 ]

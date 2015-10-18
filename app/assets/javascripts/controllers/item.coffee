@@ -31,7 +31,9 @@ controller.controller 'ItemCtrl', [
           return
         else
           Item.create(item: params).$promise.then ((value) ->
-            $scope.items.unshift value
+            item = angular.copy value
+            $scope.item = angular.copy value
+            $scope.items.unshift item
             $scope.success = "Saved successfully"
             $scope.errors = null
             return

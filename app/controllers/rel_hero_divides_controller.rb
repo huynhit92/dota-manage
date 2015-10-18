@@ -1,7 +1,7 @@
 class RelHeroDividesController < ApplicationController
   load_and_authorize_resource
 
-  def new
+  def show
   end
 
   def create

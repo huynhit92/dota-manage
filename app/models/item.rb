@@ -29,4 +29,17 @@ class Item < ActiveRecord::Base
     return TYPE_MASTERS.key(self.item_type)
   end
 
+  def methods_json
+    return {
+      :img_path => self.img_path,
+      :color => self.get_color
+    }
+  end
+
+  def self.compact_json
+    return {
+      :include => {},
+      :methods => :methods_json
+    }
+  end
 end

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :rel_hero_divides
 
   resources :heroes do
-    resources :rel_hero_divides
+    resources :rel_hero_divides do
+      resources :item_sets do
+        # resources :rel_
+      end
+    end
     resources :rel_hero_grown_levels
   end
   get 'heroes_list_ajax' => "heroes#list_ajax"

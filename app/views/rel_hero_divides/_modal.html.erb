@@ -1,0 +1,25 @@
+<div class="modal fade bs-example-modal-lg" id="itemsetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Item</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-info fade in" role="alert" ng-show="success">{{ success }}</div>
+        <div class="alert alert-block alert-danger fade in" role="alert" ng-show="errors.length > 0">
+          <span ng-repeat="err in errors">
+            {{ err }}<br/>
+          </span>
+        </div>
+        <form role="form" class="row">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="save(item)">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

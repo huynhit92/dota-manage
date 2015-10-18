@@ -61,3 +61,19 @@ services.factory 'RelHeroDivide', [
           hero_id: '@hero_id'
           id: '@rel_hero_divide.id'
 ]
+
+services.factory 'ItemSet', [
+  '$resource'
+  ($resource) ->
+    $resource '/heroes/:hero_id/rel_hero_divides/:rel_hero_divide_id/item_sets/:id', {},
+      update:
+        method: 'PUT'
+        params:
+          hero_id: '@hero_id'
+          rel_hero_divide_id: '@rel_hero_divide.id'
+      create:
+        method: 'POST'
+        params:
+          hero_id: '@hero_id'
+          rel_hero_divide_id: '@rel_hero_divide.id'
+]

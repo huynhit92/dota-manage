@@ -3,16 +3,17 @@ class ItemsController < ApplicationController
 
   def index
     @q = Item.order(id: :desc).search(params[:q])
+    Rails.logger.debug(@q)
     if(params[:q])
+      Rails.logger.debug("")
       @items = @q.result(distinct: true).page(params[:page])
     else
       @items = @items.none.page(params[:page])
     end
     @files = Dir["#{Rails.root}/app/assets/images/items"]
-    Rails.logger.debug(params[:q])
     respond_to do |format|
       format.html
-      format.json { render :json => @items }
+      format.json { render :json => @items, :methods => [:img_path, :get_color] }
     end
   end
 

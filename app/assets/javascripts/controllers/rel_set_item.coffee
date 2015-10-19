@@ -50,9 +50,12 @@ controller.controller 'RelSetItemCtrl', [
 
     $scope.searchItem = ->
       return if $scope.itemSearch is undefined
-      console.log $scope.itemSearch
-      Item.query(name: $scope.itemSearch).$promise.then ( (value) ->
-        console.log value
+      params =
+        q:
+          name_cont: $scope.itemSearch
+      Item.query(params).$promise.then ( (value) ->
+        $scope.items = value
+        console.log $scope.items
       )
 
 ]

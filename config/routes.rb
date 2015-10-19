@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get 'divides_list_ajax' => "divides#list_ajax"
 
   resources :items
+  get   '/:format/items',               :to => 'items#index'
 end

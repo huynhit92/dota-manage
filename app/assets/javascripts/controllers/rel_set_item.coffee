@@ -8,6 +8,7 @@ controller.controller 'RelSetItemCtrl', [
   ($scope, $rootScope, RelSetItem, Item) ->
     $scope.init = ->
       $scope.rel_hero_divide = $('#data').data('rel')
+      $scope.listItemShow = false
       return
 
     $scope.edit = (rel_set_item) ->
@@ -55,7 +56,13 @@ controller.controller 'RelSetItemCtrl', [
           name_cont: $scope.itemSearch
       Item.query(params).$promise.then ( (value) ->
         $scope.items = value
-        console.log $scope.items
+        $scope.listItemShow = true
       )
+      return
+
+    $scope.setValue = (id) ->
+      $scope.rel_set_item.item_id = id
+      $scope.listItemShow = false
+      return
 
 ]

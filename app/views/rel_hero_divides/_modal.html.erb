@@ -32,7 +32,7 @@
               <button type="button" class="btn btn-primary" ng-click="searchItem()">検索</button>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-if="listItemShow">
             <div class="col-sm-12">
               <table class="table table-condensed table-item-list">
                 <tr>
@@ -48,7 +48,7 @@
                   <td>{{ item.required_level }}</td>
                   <td class="background-{{ item.item_type }}"></td>
                   <td>
-                    <button>Choose</button>
+                    <button class="btn btn-primary btn-xs" ng-click="setValue(item.id)">Choose</button>
                   </td>
                 </tr>
               </table>

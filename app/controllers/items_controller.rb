@@ -3,9 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @q = Item.order(id: :desc).search(params[:q])
-    Rails.logger.debug(@q)
     if(params[:q])
-      Rails.logger.debug("")
       @items = @q.result(distinct: true).page(params[:page])
     else
       @items = @items.none.page(params[:page])

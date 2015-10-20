@@ -49,11 +49,26 @@ controller.controller 'RelSetItemCtrl', [
           return
         return
 
+    $scope.delete = (params, index) ->
+      if confirm('本当に削除したいですか')
+        RelSetItem.delete(hero_id: $scope.rel_hero_divide.hero_id, rel_hero_divide_id: $scope.rel_hero_divide.id, item_set_id: $scope.rel_hero_divide.item_set.id, id: params.id).$promise.then ((value) ->
+          $scope.rel_hero_divide.item_set.rel_set_items.splice(index, 1)
+          $scope.success = $scope.MESSAGES.save_success
+          $scope.errors = null
+          return
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
+      else
+
     $scope.searchItem = ->
       return if $scope.itemSearch is undefined
       params =
         q:
           name_cont: $scope.itemSearch
+          item_type_eq: $scope.item_type
       Item.query(params).$promise.then ( (value) ->
         $scope.items = value
         $scope.listItemShow = true

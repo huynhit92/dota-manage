@@ -33,6 +33,7 @@
         <td class="background-{{rel_set_item.item.item_type}}"></td>
         <td>
           <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#rsiModal" ng-click="edit(rel_set_item)">編集</button>
+          <button class="btn btn-primary btn-xs" ng-click="delete(rel_set_item, $index)">削除</button>
         </td>
       </tr>
     </table>

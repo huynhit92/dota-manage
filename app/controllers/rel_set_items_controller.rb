@@ -17,6 +17,14 @@ class RelSetItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if @rel_set_item.destroy
+      render json: {response: 'ok'}.to_json, status: :ok
+    else
+      render json: @rel_set_item.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
 
     def rel_set_item_params

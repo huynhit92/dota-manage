@@ -86,4 +86,12 @@ services.factory 'RelSetItem', [
           hero_id: '@hero_id'
           rel_hero_divide_id: '@rel_hero_divide_id'
           item_set_id: '@item_set_id'
+      delete:
+        method: 'DELETE'
+        params:
+          hero_id: '@hero_id'
+          rel_hero_divide_id: '@rel_hero_divide_id'
+          item_set_id: '@item_set_id'
+          id: '@id'
+
 ]

@@ -17,7 +17,7 @@
         <th><%= Item.human_attribute_name(:item_type) %></th>
         <th></th>
       </tr>
-      <tr ng-repeat="item in items | limitTo:10">
+      <tr ng-repeat="item in items">
         <td><img ng-src="{{ item.img_path }}" /></td>
         <td>{{ item.name }}</td>
         <td>{{ item.required_level }}</td>

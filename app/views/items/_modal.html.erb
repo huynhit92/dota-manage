@@ -55,10 +55,10 @@
             <div class="form-group">
               <label><%= Item.human_attribute_name(:item_type) %></label>
               <select ng-model="item.item_type" ng-options='k*1 as v for (k, v) in MASTERS["item_types"]' class="form-control">
-                <option value="" selected>Please Select</option>
+                <option value="" selected>選択してください</option>
               </select>
             </div>
-          </div> 
+          </div>
         </form>
       </div>
       <div class="modal-footer">

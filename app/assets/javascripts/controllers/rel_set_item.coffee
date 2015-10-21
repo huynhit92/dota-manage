@@ -76,7 +76,10 @@ controller.controller 'RelSetItemCtrl', [
       return
 
     $scope.setValue = (id) ->
-      $scope.rel_set_item.item_id = id
+      if $scope.rel_set_item is undefined
+        $('#itemId').val(id)
+      else
+        $scope.rel_set_item.item_id = id
       $scope.listItemShow = false
       return
 

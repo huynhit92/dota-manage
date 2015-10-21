@@ -16,6 +16,7 @@ controller.controller 'RelSetItemCtrl', [
       $scope.errors = []
 
       $scope.rel_set_item = angular.copy rel_set_item
+      $scope.rel_set_item = {} if $scope.rel_set_item is undefined
 
       $scope.save = (params) ->
         if params is undefined
@@ -76,10 +77,7 @@ controller.controller 'RelSetItemCtrl', [
       return
 
     $scope.setValue = (id) ->
-      if $scope.rel_set_item is undefined
-        $('#itemId').val(id)
-      else
-        $scope.rel_set_item.item_id = id
+      $scope.rel_set_item.item_id = id
       $scope.listItemShow = false
       return
 

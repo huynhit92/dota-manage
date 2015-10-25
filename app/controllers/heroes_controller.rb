@@ -2,7 +2,7 @@ class HeroesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @q = Hero.order(id: :desc).search(params[:q])
+    @q = @heroes.order(id: :desc).search(params[:q])
     if(params[:q])
       @heroes = @q.result(distinct: true).page(params[:page])
     else

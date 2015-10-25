@@ -14,6 +14,7 @@ class Item < ActiveRecord::Base
     "orange" => ORANGE
   }
   IMG_PATH = "assets/items/"
+  IMAGES = Dir.glob("app/assets/images/items/*.png").map{|img| "assets/" + img.split('images/')[1]}
 
   has_many :rel_set_items
 

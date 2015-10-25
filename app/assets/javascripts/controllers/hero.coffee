@@ -32,9 +32,7 @@ controller.controller 'HeroesCtrl', [
       $scope.images = $('#data').data 'images'
 
     $scope.edit = (hero) ->
-
       $(".image-picker").imagepicker()
-
       $scope.hero = angular.copy hero
       $scope.success = null
       $scope.errors = []

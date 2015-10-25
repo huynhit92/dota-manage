@@ -4,7 +4,7 @@
   ></span>
 <h2>ヒーロー一覧</h2>
 <%= render 'search' %>
-<div ng-init="init()" ng-controller="HeroesCtrl">
+<div ng-init="init()" ng-controller="HeroesCtrl" ng-show="heroes.length > 0">
   <div style="text-align: right">
     <button class="btn btn-primary" data-toggle="modal" data-target="#heroModal" ng-click="edit()"><i class="glyphicon glyphicon-plus"></i></button>
   </div>

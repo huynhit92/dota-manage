@@ -9,7 +9,12 @@ ja:
   activerecord:
     models:
       hero: ヒーロー
-      
+      item: アイテム
+      grown_level_master: レベルマスター
+      item_set: アイテムセット
+      rel_hero_divide: ヒーロー分割
+      rel_hero_grown_level: ヒーローレベル提携
+      rel_set_item: ヒーローアイテム提携
 
     attributes:
       defaults: &defaults
@@ -23,11 +28,12 @@ ja:
         image: 画像
         description: 説明
         type: 種類
+        name: 名前
 
       hero:
         <<: *defaults
-        name: 名前
         base_star: ベースレベル
-        type: 種類
+        hero_type: 種類
         position: 位置
-
+      item:
+        <<: *defaults

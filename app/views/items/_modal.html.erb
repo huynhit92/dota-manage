@@ -12,52 +12,79 @@
             {{ err }}<br/>
           </span>
         </div>
-        <form role="form" class="row">
+        <form role="form" class="row form-horizontal">
           <div class="col-sm-6">
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:name) %></label>
-              <input type="text" class="form-control" ng-model="item.name">
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:name) %></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="item.name">
+              </div>
             </div>
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:required_level) %></label>
-              <input type="text" class="form-control" ng-model="item.required_level">
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:required_level) %></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="item.required_level">
+              </div>
             </div>
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:made_of) %></label>
-              <input type="text" class="form-control" ng-model="item.made_of">
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:made_of) %></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="item.made_of">
+              </div>
             </div>
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:can_create) %></label>
-              <input type="text" class="form-control" ng-model="item.can_create">
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:can_create) %></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="item.can_create">
+              </div>
             </div>
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:description) %></label>
-              <textarea class="form-control" ng-model="item.description"></textarea>
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:description) %></label>
+              <div class="col-sm-8">
+                <textarea class="form-control" ng-model="item.description"></textarea>
+              </div>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:hero_use) %></label>
-              <input type="text" class="form-control" ng-model="item.hero_use">
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:hero_use) %></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="item.hero_use">
+              </div>
             </div>
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:receive_method) %></label>
-              <input type="text" class="form-control" ng-model="item.receive_method">
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:receive_method) %></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="item.receive_method">
+              </div>
             </div>
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:quality) %></label>
-              <input type="text" class="form-control" ng-model="item.quality">
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:quality) %></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" ng-model="item.quality">
+              </div>
             </div>
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:img_url) %></label>
-              <input type="text" class="form-control" ng-model="item.img_url">
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:img_url) %></label>
+              <div class="col-sm-8">
+                <input type="text" style="display:none" class="form-control" ng-model="item.img_url">
+                <img ng-src="{{itemImg}}"/>
+                <button class="btn btn-primary btn-xs" ng-click="chooseImage()">選択</button>
+              </div>
             </div>
             <div class="form-group">
-              <label><%= Item.human_attribute_name(:item_type) %></label>
-              <select ng-model="item.item_type" ng-options='k*1 as v for (k, v) in MASTERS["item_types"]' class="form-control">
-                <option value="" selected>選択してください</option>
-              </select>
+              <label class="col-sm-4 control-label"><%= Item.human_attribute_name(:item_type) %></label>
+              <div class="col-sm-8">
+                <select ng-model="item.item_type" ng-options='k*1 as v for (k, v) in MASTERS["item_types"]' class="form-control">
+                  <option value="" selected>選択してください</option>
+                </select>
+              </div>
             </div>
+          </div>
+          <div class="col-sm-12 select-img-box">
+            <select class="image-picker show-html">
+              <option ng-repeat="img in images" data-img-src="{{img}}" value="{{$index}}"> {{$index}}</option>
+            </select>
           </div>
         </form>
       </div>

@@ -9,13 +9,13 @@ services.factory 'Item', [
         params: {id: '@item.id'}
       create:
         method: 'POST'
-    $resource '/json/items?:searchParams', {},
       query:
         method: 'GET'
         params:
           searchParams: '@searchParams'
         paramSerializer: '$httpParamSerializerJQLike'
         isArray: true
+        url: '/json/items?:searchParams'
 ]
 
 services.factory 'Hero', [

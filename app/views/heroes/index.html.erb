@@ -1,29 +1,44 @@
-<div class="row hero-main clearfix">
-  <div class="col-sm-4">
-    <h3><i class="sprite-bgdsh">Lực</i></h3>
-    <br/><br/>
-    <% @heroes_strength.each_with_index do |hero, index| %>
-        <% if index % 2 == 0 %><div class="row hero-span"><% end %>
-        <div class="col-xs-6"><%= gen_hero_index(hero) %></div>
-        <% if index % 2 == 1 || @heroes_strength.size == 1 %></div><% end %>
-    <% end %>
+<span id="data"
+  data-heroes="<%= @heroes.to_json(Hero.compact_json) %>"
+  data-images="<%= Hero::IMAGES %>"
+  ></span>
+<h2>ヒーロー一覧</h2>
+<%= render 'search' %>
+<div ng-init="init()" ng-controller="HeroesCtrl" ng-show="heroes.length > 0">
+  <div style="text-align: right">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#heroModal" ng-click="edit()"><i class="glyphicon glyphicon-plus"></i></button>
   </div>
-  <div class="col-sm-4">
-    <h3><i class="sprite-bgdsh">Trí</i></h3>
-    <br/><br/>
-    <% @heroes_agility.each_with_index do |hero, index| %>
-        <% if index % 2 == 0 %><div class="row"><% end %>
-        <div class="col-xs-6"><%= gen_hero_index(hero) %></div>
-        <% if index % 2 == 1 || @heroes_agility.size == 1 %></div><% end %>
-    <% end %>
+  <br/>
+  <div class="row">
+    <div class="col-md-8"><%= paginate @heroes %></div>
+    <div class="col-md-4" style="margin-bottom:30px;"><%= page_entries_info @heroes %></div>
   </div>
-  <div class="col-sm-4">
-    <h3><i class="sprite-bgdsh">Mẫn</i></h3>
-    <br/><br/>
-    <% @heroes_inteligent.each_with_index do |hero, index| %>
-        <% if index % 2 == 0 %><div class="row"><% end %>
-        <div class="col-xs-6"><%= gen_hero_index(hero, index) %></div>
-        <% if index % 2 == 1 || @heroes_inteligent.size == 1 %></div><% end %>
-    <% end %>
+  <table class="table table-hover">
+    <tr>
+      <th><%= Hero.human_attribute_name(:name) %></th>
+      <th><%= Hero.human_attribute_name(:image) %></th>
+      <th><%= Hero.human_attribute_name(:description) %></th>
+      <th><%= Hero.human_attribute_name(:type) %></th>
+      <th><%= Hero.human_attribute_name(:base_star) %></th>
+      <th><%= Hero.human_attribute_name(:position) %></th>
+      <th>操作</th>
+    </tr>
+    <tr ng-repeat="hero in heroes">
+      <td>{{ hero.name }}</td>
+      <td><img ng-src="{{ hero.methods_json.img_path }}"/></td>
+      <td data-toggle="tooltip" data-placement="top" data-container="body" title="{{ hero.description }}">{{ hero.description | cut:true:50:' ...' }}</td>
+      <td>{{ hero.hero_type }}</td>
+      <td>{{ hero.base_star }}</td>
+      <td>{{ MASTERS.hero_positions[hero.position] }}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#heroModal" ng-click="edit(hero)">編集</button>
+        <a class="btn btn-primary btn-xs" ng-href="heroes/{{ hero.id }}">詳細</a>
+      </td>
+    </tr>
+  </table>
+  <div class="row">
+    <div class="col-md-8"><%= paginate @heroes %></div>
+    <div class="col-md-4" style="margin-top:30px;"><%= page_entries_info @heroes %></div>
   </div>
+  <%= render partial: "modal" %>
 </div>

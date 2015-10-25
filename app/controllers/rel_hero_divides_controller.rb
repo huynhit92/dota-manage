@@ -1,51 +1,37 @@
 class RelHeroDividesController < ApplicationController
-  def index
-    @rel_hero_divides = RelHeroDivide.all
-  end
-  
-  def new
-    @rel_hero_divide = RelHeroDivide.new
-  end
-  
+  load_and_authorize_resource
+
   def show
-    
   end
-  
+
   def create
-    @rel_hero_divide = RelHeroDivide.new(rel_hero_divide_params)
     if @rel_hero_divide.save
-      redirect_to rel_hero_divides_path
+      render json: @rel_hero_divide.to_json(:include => :divide), status: :ok
     else
-      render action: "new"
-      
+      render json: @rel_hero_divide.errors.full_messages, status: :unprocessable_entity
     end
   end
-  
-  def edit
-    @rel_hero_divide = RelHeroDivide.find(params[:id])
-  end
-  
+
   def update
-    @rel_hero_divide = RelHeroDivide.find(params[:id])
     if @rel_hero_divide.update(rel_hero_divide_params)
-      redirect_to edit_rel_hero_divide_path(@rel_hero_divide), notice: "Update complete"
+      render json: @rel_hero_divide.to_json(:include => :divide), status: :ok
     else
-      render action: "edit"
-      
+      render json: @rel_hero_divide.errors.full_messages, status: :unprocessable_entity
     end
   end
-  
+
   def destroy
-    @rel_hero_divide = RelHeroDivide.find(params[:id])
-    @rel_hero_divide.destroy
-    flash[:success] = "Success"
-    redirect_to rel_hero_divides_path
+    if @rel_hero_divide.destroy
+      render json: {response: 'ok'}.to_json, status: :ok
+    else
+      render json: @rel_hero_divide.errors.full_messages, status: :unprocessable_entity
+    end
   end
-  
+
   private
-  
+
     def rel_hero_divide_params
       params.require(:rel_hero_divide).permit(:hero_id, :divide_id, :lock_version)
     end
-  
+
 end

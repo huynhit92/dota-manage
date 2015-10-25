@@ -1,0 +1,50 @@
+</br>
+<table class="table table-striped">
+  <tr>
+    <td width="25%"><%= Divide.human_attribute_name(:name) %></td>
+    <td>画像</td>
+    <td><%= RelHeroDivide.human_attribute_name(:divide_id) %></td>
+    <td>組合せ</td>
+    <td width="25%"></td>
+  </tr>
+  <tr ng-repeat="rel in hero.rel_hero_divides">
+    <td>
+      {{rel.divide.name}}
+    </td>
+    <td>
+      <i class="sprite-bor{{rel.divide_id}}"></i>
+    </td>
+    <td>
+      <select ng-options="k*1 as v for (k, v) in MASTERS.divide_masters" ng-model="rel.divide_id" class="form-control">
+        <option value="">選択</option>
+      </select>
+    </td>
+    <td>
+      <div class="bor">
+        <i class="sprite-bor{{rel.divide_id}}"></i>
+      </div>
+      <img ng-src="{{ hero.methods_json.img_path }}"/>
+    </td>
+    <td>
+      <a href="/heroes/{{hero.id}}/rel_hero_divides/{{rel.id}}" class="btn btn-primary btn-xs">詳細</a>
+      <button class="btn btn-primary btn-xs" ng-click="saveRelDivide(rel)">変更</button>
+      <button class="btn btn-primary btn-xs" ng-click="deleteRelDivide(rel, $index)">削除</button>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>
+      <select ng-options="k*1 as v for (k, v) in MASTERS.divide_masters" ng-model="new_divide.divide_id" class="form-control">
+        <option value="">選択</option>
+      </select>
+    </td>
+    <td>
+      <div class="bor">
+        <i class="sprite-bor{{new_divide.divide_id}}"></i>
+      </div>
+      <img ng-src="{{ hero.methods_json.img_path }}"/>
+    </td>
+    <td><button class="btn btn-primary btn-xs" ng-click="createRelDivide(new_divide)">作成</button></td>
+  </tr>
+</table>

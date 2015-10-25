@@ -1,0 +1,42 @@
+<span id="data" data-rel="<%= @rel_hero_divide.to_json(RelHeroDivide.compact_json) %>"></span>
+<div ng-controller="RelSetItemCtrl" ng-init="init()" class="row">
+  <span class="col-md-2">
+    <div class="bor">
+      <i class="sprite-bor{{rel_hero_divide.divide_id}}"></i>
+    </div>
+    <img ng-src="/{{ rel_hero_divide.hero.methods_json.img_path }}"/>
+    <br/><br/>
+    <div>
+      <button class="btn btn-primary" onclick="window.history.back();">戻る</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#rsiModal" ng-click="edit()"><i class="glyphicon glyphicon-plus"></i></button>
+    </div>
+  </span>
+  <span class="col-md-8" >
+    <table class="table table-hover table-item-list">
+      <tr>
+        <th><%= Item.human_attribute_name(:img_url) %></th>
+        <th><%= Item.human_attribute_name(:name) %></th>
+        <th><%= Item.human_attribute_name(:required_level) %></th>
+        <th><%= Item.human_attribute_name(:item_type) %></th>
+        <th>操作</th>
+      </tr>
+      <tr ng-repeat="rel_set_item in rel_hero_divide.item_set.rel_set_items">
+        <td>
+          <img ng-src="/{{rel_set_item.item.methods_json.img_path}}">
+        </td>
+        <td>
+          {{rel_set_item.item.name}}
+        </td>
+        <td>
+          {{rel_set_item.item.required_level}}
+        </td>
+        <td class="background-{{rel_set_item.item.item_type}}"></td>
+        <td>
+          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#rsiModal" ng-click="edit(rel_set_item)">編集</button>
+          <button class="btn btn-primary btn-xs" ng-click="delete(rel_set_item, $index)">削除</button>
+        </td>
+      </tr>
+    </table>
+  </span>
+  <%= render "rel_hero_divides/modal" %>
+</div>

@@ -7,6 +7,9 @@ class Ability
       can [:manage], Hero
       can [:manage], Divide
       can [:manage], Item
+      can [:manage], RelHeroGrownLevel
+      can [:manage], RelHeroDivide
+      can [:manage], RelSetItem
     end
   end
 end

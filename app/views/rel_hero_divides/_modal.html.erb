@@ -1,0 +1,71 @@
+<div class="modal fade bs-example-modal-lg" id="rsiModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Item</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-info fade in" role="alert" ng-show="success">{{ success }}</div>
+        <div class="alert alert-block alert-danger fade in" role="alert" ng-show="errors.length > 0">
+          <span ng-repeat="err in errors">
+            {{ err }}<br/>
+          </span>
+        </div>
+        <form role="form" class="form-horizontal">
+          <div class="form-group">
+            <div class="col-sm-2">
+              <input type="text" class="form-control" ng-model="rel_set_item.item_id" id="itemId">
+            </div>
+            <div class="col-sm-4">
+              <img ng-src="/{{rel_set_item.item.methods_json.img_path}}">
+            </div>
+            <div class="col-sm-4">
+              {{rel_set_item.item.name}}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <input type="text" class="form-control" ng-model="itemSearch" placeholder="アイテム名"/>
+            </div>
+            <div class="col-sm-4">
+              <select ng-model="item_type" ng-options='k*1 as v for (k, v) in MASTERS["item_types"]' class="form-control">
+                <option value="" selected>選択してください</option>
+              </select>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="btn btn-primary" ng-click="searchItem()">検索</button>
+            </div>
+          </div>
+          <div class="form-group" ng-if="listItemShow" style="overflow-y: scroll;max-height: 700px">
+            <div class="col-sm-12">
+              <table class="table table-condensed table-item-list">
+                <tr>
+                  <th><%= Item.human_attribute_name(:img_url) %></th>
+                  <th><%= Item.human_attribute_name(:name) %></th>
+                  <th><%= Item.human_attribute_name(:required_level) %></th>
+                  <th><%= Item.human_attribute_name(:item_type) %></th>
+                  <th></th>
+                </tr>
+                <tr ng-repeat="item in items">
+                  <td><img ng-src="/{{ item.img_path }}" /></td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.required_level }}</td>
+                  <td class="background-{{ item.item_type }}"></td>
+                  <td>
+                    <button class="btn btn-primary btn-xs" ng-click="setValue(item.id)">選択</button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="window.history.back();">戻る</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">閉める</button>
+        <button type="button" class="btn btn-primary" ng-click="save(rel_set_item)">保存</button>
+      </div>
+    </div>
+  </div>
+</div>

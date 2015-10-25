@@ -5,7 +5,7 @@
 i {
   font-size:18px;
 }
-  
+
 footer {
   margin-top:20px;
   padding-top:20px;
@@ -155,7 +155,7 @@ footer {
 }
 
 .tiengioi {
-    margin-left: 30px;  
+    margin-left: 30px;
 }
 
 .tiengioi .vpham {
@@ -176,7 +176,7 @@ footer {
 }
 .divide-item{
   padding: 5px;
-  
+
 }
 .divide-item img{
   border: 2px solid;
@@ -236,4 +236,15 @@ footer {
 }
 .table-item-list .background-5 {
   background-color: orange;
+}
+.image_picker_selector {
+  display: none;
+  margin-left: 30px !important;
+}
+.image_picker_selector li{
+  cursor: pointer;
+}
+.select-img-box {
+  overflow-x: scroll;
+  max-height: 330px;
 }

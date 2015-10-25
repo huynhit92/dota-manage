@@ -1,5 +1,4 @@
 class Item < ActiveRecord::Base
-  extend Enumerize
   include Rails.application.routes.url_helpers
 
   WHITE = 1
@@ -12,16 +11,15 @@ class Item < ActiveRecord::Base
     "green" => GREEN,
     "blue" => BLUE,
     "purple" => PURPLE,
-    "orange" => ORANGE 
+    "orange" => ORANGE
   }
   IMG_PATH = "assets/items/"
+  IMAGES = Dir.glob("app/assets/images/items/*.png").map{|img| "assets/" + img.split('images/')[1]}
 
   has_many :rel_set_items
 
-  # enumerize :item_type, in: {:white => WHITE, :green => GREEN, :blue => BLUE, :purple => PURPLE, :orange => ORANGE}, predicates: true
   validates :name, presence: true
 
-  
   def img_path
     return IMG_PATH + img_url
   end
@@ -30,4 +28,17 @@ class Item < ActiveRecord::Base
     return TYPE_MASTERS.key(self.item_type)
   end
 
+  def methods_json
+    return {
+      :img_path => self.img_path,
+      :color => self.get_color
+    }
+  end
+
+  def self.compact_json
+    return {
+      :include => {},
+      :methods => :methods_json
+    }
+  end
 end

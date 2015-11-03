@@ -93,5 +93,24 @@ services.factory 'RelSetItem', [
           rel_hero_divide_id: '@rel_hero_divide_id'
           item_set_id: '@item_set_id'
           id: '@id'
+]
 
+services.factory 'Skill', [
+  '$resource'
+  ($resource) ->
+    $resource '/heroes/:hero_id/skills/:id', {},
+      update:
+        method: 'PUT'
+        params:
+          hero_id: '@hero_id'
+          id: '@skill.id'
+      create:
+        method: 'POST'
+        params:
+          hero_id: '@hero_id'
+      delete:
+        method: 'DELETE'
+        params:
+          hero_id: '@hero_id'
+          id: '@id'
 ]

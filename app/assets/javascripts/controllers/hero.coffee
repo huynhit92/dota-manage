@@ -25,14 +25,18 @@ controller.controller 'HeroesCtrl', [
   'Hero'
   'RelHeroGrownLevel'
   'RelHeroDivide'
-  ($scope, $rootScope, Hero, RelHeroGrownLevel, RelHeroDivide) ->
+  'Skill'
+  ($scope, $rootScope, Hero, RelHeroGrownLevel, RelHeroDivide, Skill) ->
 
     $scope.init = ->
       $scope.heroes = $('#data').data 'heroes'
       $scope.images = $('#data').data 'images'
+      $scope.skill_images = $('#data').data 'skill-images'
+      $scope.new_skill = {}
+      $scope.new_level = {}
 
     $scope.edit = (hero) ->
-      $(".image-picker").imagepicker()
+      $('.image-picker').imagepicker()
       $scope.hero = angular.copy hero
       $scope.success = null
       $scope.errors = []
@@ -157,5 +161,56 @@ controller.controller 'HeroesCtrl', [
           return
         return
 
+      $scope.chooseSkillImage = (index, img_url) ->
+        if index?
+          $('.image-picker').imagepicker()
+          $scope.chosen = true
+          $(".thumbnail").removeClass('selected')
+          $(".image_picker_selector").find("img[src$='#{img_url}']").closest('.thumbnail').addClass('selected')
+        $(".image_picker_selector").show()
+        $(".image_picker_selector").on 'dblclick', 'li' , ->
+          img_path = $(this).find('.image_picker_image').attr('src')
+          if index?
+            $scope.hero.skills[index].methods_json.img_path = img_path
+            $scope.hero.skills[index].img_url = img_path.split('skills/')[1]
+          else
+            $scope.new_skill.img_url = img_path.split('skills/')[1]
+          $scope.$apply()
+          $(".image_picker_selector").hide()
+          return
+        return
 
+      $scope.saveSkill = (params) ->
+        Skill.update(skill: params, hero_id: hero.id).$promise.then ((value) ->
+          $scope.success = $scope.MESSAGES.save_success
+          angular.copy value, params
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
+
+      $scope.createSkill = (params) ->
+        params.hero_id = $scope.hero.id
+        Skill.create(skill: params, hero_id: hero.id).$promise.then ((value) ->
+          $scope.hero.skills.push value
+          $scope.new_skill = null
+          $scope.success = $scope.MESSAGES.save_success
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
+
+      $scope.deleteSkill = (params, index) ->
+        Skill.delete(id: params.id, hero_id: hero.id).$promise.then ((value) ->
+          $scope.hero.skills.splice(index, 1)
+          $scope.success = $scope.MESSAGES.save_success
+          $scope.errors = null
+          return
+        ), (error) ->
+          $scope.errors = error.data
+          $scope.success = null
+          return
+        return
 ]

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
     end
     resources :rel_hero_grown_levels
+    resources :skills
   end
 
   resources :divides do

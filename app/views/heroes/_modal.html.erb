@@ -3,8 +3,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs" role="tablist" id="hero-modal">
           <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">基本情報</a></li>
+          <li role="presentation" ng-if="hero.id"><a href="#skills" aria-controls="skills" role="tab" data-toggle="tab" onclick="$('.image-picker').imagepicker()"><%= Hero.human_attribute_name(:skills) %></a></li>
           <li role="presentation" ng-if="hero.id"><a href="#grownLevel" aria-controls="grownLevel" role="tab" data-toggle="tab"><%= Hero.human_attribute_name(:grown_levels) %></a></li>
           <li role="presentation" ng-if="hero.id"><a href="#divides" aria-controls="divides" role="tab" data-toggle="tab"><%= Hero.human_attribute_name(:divides) %></a></li>
         </ul>
@@ -19,6 +20,9 @@
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="basic">
             <%= render 'heroes/basic' %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="skills" ng-if="hero.id">
+            <%= render 'heroes/skills' %>
           </div>
           <div role="tabpanel" class="tab-pane" id="grownLevel" ng-if="hero.id">
             <%= render 'heroes/grown_levels' %>

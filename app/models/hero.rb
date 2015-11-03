@@ -71,6 +71,9 @@ class Hero < ActiveRecord::Base
         },
         :rel_hero_divides => {
           :include => :divide
+        },
+        :skills => {
+          :methods => :methods_json
         }
      },
      :methods => :methods_json

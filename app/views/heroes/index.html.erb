@@ -1,6 +1,7 @@
 <span id="data"
   data-heroes="<%= @heroes.to_json(Hero.compact_json) %>"
   data-images="<%= Hero::IMAGES %>"
+  data-skill-images="<%= Skill::IMAGES %>"
   ></span>
 <h2>ヒーロー一覧</h2>
 <%= render 'search' %>

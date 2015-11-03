@@ -1,0 +1,44 @@
+</br>
+<div class="row">
+  <table class="table table-striped">
+    <tr>
+      <td>画像</td>
+      <td><%= Skill.human_attribute_name(:name) %></td>
+      <td><%= Skill.human_attribute_name(:description) %></td>
+      <td width="25%"></td>
+    </tr>
+    <tr ng-repeat="skill in hero.skills">
+      <td>
+        <img ng-src="{{skill.methods_json.img_path}}" ng-click="chooseSkillImage($index, img_url)"/>
+      </td>
+      <td>
+        <input type="text" class="form-control" style="width:200px" ng-model="skill.name">
+      </td>
+      <td>
+        <textarea rows="3" class="form-control" placeholder="<%= Skill.human_attribute_name(:description) %>" ng-model="skill.description"></textarea>
+      </td>
+      <td>
+        <button class="btn btn-primary btn-xs" ng-click="saveSkill(skill)">変更</button>
+        <button class="btn btn-primary btn-xs" ng-click="deleteSkill(skill, $index)">削除</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button ng-click="chooseSkillImage()" class="btn btn-primary btn-xs" ng-show="!new_skill.img_url">選択</button>
+        <img ng-src="assets/skills/{{new_skill.img_url}}" ng-model="new_skill.img_url" ng-show="new_skill.img_url"/>
+      </td>
+      <td>
+        <input type="text" class="form-control" style="width:200px" ng-model="new_skill.name">
+      </td>
+      <td>
+        <textarea rows="3" class="form-control" placeholder="<%= Skill.human_attribute_name(:description) %>" ng-model="new_skill.description"></textarea>
+      </td>
+      <td><button class="btn btn-primary btn-xs" ng-click="createSkill(new_skill)">作成</button></td>
+    </tr>
+  </table>
+  <div class="col-sm-12 select-img-box">
+    <select class="image-picker show-html">
+      <option ng-repeat="img in skill_images" data-img-src="{{img}}" value="{{$index}}"> {{$index}}</option>
+    </select>
+  </div>
+</div>

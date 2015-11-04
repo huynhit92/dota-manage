@@ -174,6 +174,7 @@ controller.controller 'HeroesCtrl', [
             $scope.hero.skills[index].methods_json.img_path = img_path
             $scope.hero.skills[index].img_url = img_path.split('skills/')[1]
           else
+            $scope.new_skill = {} unless $scope.new_skill?
             $scope.new_skill.img_url = img_path.split('skills/')[1]
           $scope.$apply()
           $(".image_picker_selector").hide()

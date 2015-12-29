@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :rel_hero_divides
   end
 
+  resources :blogs
+
   resources :items
   get '/:format/items', :to => 'items#index'
 end

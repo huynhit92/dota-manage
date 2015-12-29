@@ -26,12 +26,12 @@ controller.controller 'BlogsCtrl', [
         $scope.converted = Helpers.markdownConverter($scope.blog.content)
 
       $scope.$watch 'blog.content', ((newValue, oldValue) ->
-        $scope.converted = Helpers.markdownConverter($scope.blog.content)
+        $scope.converted = Helpers.markdownConverter($scope.blog.content) if newValue != oldValue
       )
 
       $scope.save = (params) ->
-        if params is undefined
-          $scope.errors.push = $scope.MESSAGES.fill_in_error
+        if _.isEmpty params
+          $scope.errors.push $scope.MESSAGES.fill_in_error
           return
         if params.id?
           Blog.update(blog: params).$promise.then ((value) ->

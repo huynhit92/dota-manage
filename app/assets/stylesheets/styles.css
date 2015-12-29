@@ -260,3 +260,6 @@ footer {
     height: auto;
     border-radius: 0;
 }
+.pointer {
+  cursor: pointer;
+}

@@ -10,8 +10,24 @@ class BlogsController < ApplicationController
     end
   end
 
+  def create
+    if @blog.save
+      render json: @blog.to_json(Blog.compact_json), status: :ok
+    else
+      render json: @blog.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @blog.update(blog_params)
+      render json: @blog.to_json(Blog.compact_json), status: :ok
+    else
+      render json: @blog.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
     def blog_params
-      params.require(:blog).permit(:title, :content, :lock_version)
+      params.require(:blog).permit(:title, :content, :blog_category_id, :lock_version)
     end
 end

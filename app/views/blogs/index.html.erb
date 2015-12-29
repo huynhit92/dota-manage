@@ -1,0 +1,34 @@
+<span id="data" data-blogs="<%= @blogs.to_json(Blog.compact_json) %>"></span>
+<div class="row" ng-controller="BlogsCtrl" ng-init="init()" ng-show="blogs.length > 0">
+  <div style="text-align: right">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#editBlogModal" ng-click="edit()"><i class="glyphicon glyphicon-plus"></i></button>
+  </div>
+  <span>
+    <div class="row">
+      <div class="col-md-8"><%= paginate @blogs %></div>
+      <div class="col-md-4" style="margin-top:30px;"><%= page_entries_info @blogs %></div>
+    </div>
+    <table class="table table-condensed table-item-list">
+      <tr>
+        <th><%= Blog.human_attribute_name(:title) %></th>
+        <th><%= Blog.human_attribute_name(:blog_category_id) %></th>
+        <th><%= Blog.human_attribute_name(:created_at) %></th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="blog in blogs">
+        <td><a data-toggle="modal" data-target="#showBlogModal" ng-click="view(blog)" class="pointer">{{ blog.title }}</a></td>
+        <td>{{ blog.blog_category.name }}</td>
+        <td>{{ blog.created_at }}</td>
+        <td>
+          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editBlogModal" ng-click="edit(blog)">編集</button>
+        </td>
+      </tr>
+    </table>
+    <div class="row">
+      <div class="col-md-8"><%= paginate @blogs %></div>
+      <div class="col-md-4" style="margin-top:30px;"><%= page_entries_info @blogs %></div>
+    </div>
+  </span>
+  <%= render 'edit_modal' %>
+  <%= render 'show_modal' %>
+</div>

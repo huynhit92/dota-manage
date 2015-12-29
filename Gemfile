@@ -32,6 +32,10 @@ gem 'nprogress-rails'
 gem 'magic_userstamp', :git => "https://github.com/hokichaio/magic_userstamp.git"
 gem 'underscore-rails'
 gem 'angularjs-rails', '~> 1.4', '>= 1.4.7'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
+gem 'showdown-rails'
 
 gem 'jquery-ui-rails'
 gem "migration_comments"

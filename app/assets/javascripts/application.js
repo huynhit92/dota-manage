@@ -21,6 +21,7 @@
 //= require nprogress-turbolinks
 //= require nprogress-angular
 //= require underscore
+//= require showdown
 //= require_tree ./services
 //= require_tree ./controllers
 //= require_tree ./filters

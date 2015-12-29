@@ -11,6 +11,7 @@ class Ability
       can [:manage], RelHeroDivide
       can [:manage], RelSetItem
       can [:manage], Skill
+      can [:manage], Blog, :user_id => user.id
     end
   end
 end

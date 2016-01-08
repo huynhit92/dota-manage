@@ -1,0 +1,5 @@
+development:
+  access_key_id: AKIAJQOMPAHQITFSSA6Q
+  secret_access_key: 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
+  region: ap-northeast-1
+  #sns_endpoint: sns.ap-northeast-1.amazonaws.com

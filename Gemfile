@@ -46,6 +46,8 @@ gem "migration_comments"
 # Use Unicorn as the app server
 gem 'unicorn'
 gem 'therubyracer'
+# rails 4 doesnt provide both digest and undigest files, uncomment below gem if needed
+#gem 'non-stupid-digest-assets'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

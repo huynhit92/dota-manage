@@ -8,10 +8,10 @@ MASTERS = {
     "入力してください" => :fill_in_error,
     "更新しました" => :save_success
   },
-  :hero_types => Hero::TYPE_MASTERS,
-  :item_types => Item::TYPE_MASTERS,
-  :hero_positions => Hero::POSITION_MASTERS,
-  :grown_level_masters => GrownLevelMaster::MASTERS,
-  :divide_masters => Divide::MASTERS,
-  :blog_categories => BlogCategory::MASTERS
+  :hero_types => {"STRENGTH"=>1, "AGILITY"=>2, "INTELIGENT"=>3},
+  :item_types => {"white"=>1, "green"=>2, "blue"=>3, "purple"=>4, "orange"=>5},
+  :hero_positions => {"前"=>1, "中"=>2, "後"=>3},
+  :grown_level_masters => {"Cấp 1"=>1, "Cấp 2"=>2, "Cấp 3"=>3, "Cấp 4"=>4, "Cấp 5"=>5},
+  :divide_masters => {"Base2"=>1, "Green"=>2, "Green + 1"=>3, "Blue"=>4, "Blue + 1"=>5, "Blue + 2"=>6, "Purple"=>7, "Purple + 1"=>8, "Purple + 2"=>9, "Purple + 3"=>10, "Purple + 4"=>11, "Golden"=>12},
+  :blog_categories => {"ruby"=>1}
 }

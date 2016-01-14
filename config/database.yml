@@ -5,6 +5,6 @@ development:
  database: dota
  pool: 5
  username: bachdx
- password: tokyo092015
- host: development.czhwrinivjsv.ap-northeast-1.rds.amazonaws.com
+ password: tokyo092014
+ host: bdb1.cb5wgkbfnfgu.ap-northeast-1.rds.amazonaws.com
  port: 3306

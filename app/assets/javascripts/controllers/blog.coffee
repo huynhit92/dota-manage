@@ -11,6 +11,7 @@ controller.controller 'BlogsCtrl', [
       return
 
     $scope.view = (blog) ->
+      $scope.blog = angular.copy blog
       $scope.content = Helpers.markdownConverter(blog.content)
       return
 

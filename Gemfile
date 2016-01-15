@@ -29,7 +29,7 @@ gem 'cancancan', '~> 1.10'
 gem 'ransack'
 gem 'kaminari'
 gem 'nprogress-rails'
-gem 'magic_userstamp', :git => "https://github.com/bachdx2812/magic_userstamp"
+gem 'magic_userstamp', :git => "git@github.com:bachdx2812/magic_userstamp.git"
 gem 'underscore-rails'
 gem 'angularjs-rails', '~> 1.4', '>= 1.4.7'
 gem 'redcarpet'

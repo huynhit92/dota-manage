@@ -1,0 +1,14 @@
+<span id="data" data-banners="<%= @banners.to_json(Banner.compact_json) %>"></span>
+
+<h2>ヒーロー一覧</h2>
+<div class="row" ng-controller="BannersCtrl" ng-init="init()" ng-show="banners.length > 0">
+  <table class="table">
+    <tr>
+      <th><%= Banner.human_attribute_name(:blog_id) %></th>
+      <th><%= Banner.human_attribute_name(:blog_pr_text) %></th>
+      <th><%= Banner.human_attribute_name(:created_at) %></th>
+      <th></th>
+    </tr>
+
+  </table>
+</div>

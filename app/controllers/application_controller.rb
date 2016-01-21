@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   helper :all
-  
+
   def set_user
     if current_user
       user_id = current_user
@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
     User.model_stamper
     User.reset_stamper
   end
-  
+
   def set_csrf_cookie_for_ng
-   cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
 
   protected

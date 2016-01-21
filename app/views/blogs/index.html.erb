@@ -17,7 +17,7 @@
       </tr>
       <tr ng-repeat="blog in blogs">
         <td><a data-toggle="modal" data-target="#showBlogModal" ng-click="view(blog)" class="pointer">{{ blog.title }}</a></td>
-        <td>{{ blog.blog_category.name }}</td>
+        <td>{{ MASTERS["blog_categories"][blog.blog_category_id] }}</td>
         <td>{{ blog.created_at }}</td>
         <td>
           <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editBlogModal" ng-click="edit(blog)">編集</button>

@@ -11,26 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229021352) do
+ActiveRecord::Schema.define(version: 20160121070924) do
 
   create_table "banners", force: :cascade do |t|
-    t.string   "lp_url",       limit: 255,   default: "", null: false
-    t.string   "img_url",      limit: 255,   default: "", null: false
-    t.text     "description",  limit: 65535
+    t.integer  "blog_id",      limit: 4
+    t.text     "blog_pr_text", limit: 65535
+    t.string   "lp_url",       limit: 255
+    t.string   "image",        limit: 255
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer  "created_by",   limit: 4
     t.integer  "updated_by",   limit: 4
     t.integer  "lock_version", limit: 4,     default: 0
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-  end
-
-  create_table "blog_categories", force: :cascade do |t|
-    t.string   "name",         limit: 255,             null: false
-    t.integer  "created_by",   limit: 4
-    t.integer  "updated_by",   limit: 4
-    t.integer  "lock_version", limit: 4,   default: 0
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "blogs", force: :cascade do |t|

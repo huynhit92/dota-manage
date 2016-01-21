@@ -12,6 +12,7 @@ class Ability
       can [:manage], RelSetItem
       can [:manage], Skill
       can [:manage], Blog, :user_id => user.id
+      can [:manage], Banner
     end
   end
 end

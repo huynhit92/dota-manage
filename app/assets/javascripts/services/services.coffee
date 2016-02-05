@@ -125,3 +125,21 @@ services.factory 'Skill', [
           hero_id: '@hero_id'
           id: '@id'
 ]
+
+services.factory 'Banner', [
+  '$resource'
+  ($resource) ->
+    $resource '/banners/:id', {},
+      update:
+        method: 'PUT'
+        params: {id: '@item.id'}
+      create:
+        method: 'POST'
+      query:
+        method: 'GET'
+        params:
+          searchParams: '@searchParams'
+        paramSerializer: '$httpParamSerializerJQLike'
+        isArray: true
+        url: '/json/items?:searchParams'
+]

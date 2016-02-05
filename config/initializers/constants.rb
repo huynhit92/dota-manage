@@ -13,5 +13,5 @@ MASTERS = {
   :hero_positions => {"前"=>1, "中"=>2, "後"=>3},
   :grown_level_masters => {"Cấp 1"=>1, "Cấp 2"=>2, "Cấp 3"=>3, "Cấp 4"=>4, "Cấp 5"=>5},
   :divide_masters => {"Base2"=>1, "Green"=>2, "Green + 1"=>3, "Blue"=>4, "Blue + 1"=>5, "Blue + 2"=>6, "Purple"=>7, "Purple + 1"=>8, "Purple + 2"=>9, "Purple + 3"=>10, "Purple + 4"=>11, "Golden"=>12},
-  :blog_categories => {"Ruby On Rails" => 1}
+  :blog_categories => {"Ruby On Rails" => 1, "Anime" => 2}
 }

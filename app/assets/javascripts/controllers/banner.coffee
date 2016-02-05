@@ -7,6 +7,7 @@ controller.controller 'BannersCtrl', [
   'Banner'
   ($scope, $rootScope, Helpers, Banner) ->
     $scope.init = ->
-      console.log ("huehuehue")
+      $scope.banners = $("#data").data('banners')
+      console.log $scope.banners
 
 ]

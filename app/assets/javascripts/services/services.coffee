@@ -132,7 +132,7 @@ services.factory 'Banner', [
     $resource '/banners/:id', {},
       update:
         method: 'PUT'
-        params: {id: '@item.id'}
+        params: {id: '@banner.id'}
       create:
         method: 'POST'
       query:

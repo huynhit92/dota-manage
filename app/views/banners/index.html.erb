@@ -2,6 +2,9 @@
 
 <h2>バーナー一覧</h2>
 <div class="row" ng-controller="BannersCtrl" ng-init="init()" ng-show="banners.length > 0">
+  <div style="text-align: right">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#editBannerModal" ng-click="edit()"><i class="glyphicon glyphicon-plus"></i></button>
+  </div>
   <table class="table">
     <tr>
       <th><%= Banner.human_attribute_name(:blog_id) %></th>

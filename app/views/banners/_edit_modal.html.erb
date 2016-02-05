@@ -6,11 +6,11 @@
         <div class="row">
           <div class="col-md-4">
             <h4 class="modal-title">
-              
+
             </h4>
           </div>
           <div class="col-md-4">
-            
+
           </div>
         </div>
       </div>
@@ -24,27 +24,29 @@
         <div class="row">
           <form role="form" class="row form-horizontal">
             <div class="form-group">
-              <label class="col-sm-2 control-label">ブログ</label>
-              <div class="col-sm-6">
-                <input type="email" class="form-control" placeholder="ブログ">
+              <label class="col-md-4 control-label">ブログ</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="ブログ" ng-model="banner.blog_id">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">ブログPR</label>
-              <div class="col-sm-6">
+              <label class="col-md-4 control-label">ブログPR</label>
+              <div class="col-md-6">
                 <textarea class="form-control textarea" rows="10" ng-model="banner.blog_pr_text"></textarea>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">ランディングページ</label>
-              <div class="col-sm-6">
-                <input type="email" class="form-control" placeholder="ランディングページ">
+              <label class="col-md-4 control-label">ランディングページ</label>
+              <div class="col-md-6">
+                <input type="text
+                " class="form-control" placeholder="ランディングページ" ng-model="banner.lp_url">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">画像</label>
-              <div class="col-sm-6">
-                <input type="email" class="form-control" placeholder="画像">
+              <label class="col-md-4 control-label">画像</label>
+              <div class="col-md-6">
+                <img ng-src="{{banner.image}}" alt="画像" ng-if="!!banner.image && !!banner" width="80%"/></br/></br/>
+                <input type="text" class="form-control" placeholder="画像" ng-model="banner.image">
               </div>
             </div>
           </form>

@@ -8,6 +8,10 @@ class BlogsController < ApplicationController
     else
       @blogs = @blogs.page(params[:page])
     end
+    respond_to do |format|
+      format.html
+      format.json { render :json => @blogs.to_json(Blog.compact_json) }
+    end
   end
 
   def create

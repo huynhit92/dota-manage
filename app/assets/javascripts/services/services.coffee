@@ -38,6 +38,14 @@ services.factory 'Blog', [
         params: {id: '@blog.id'}
       create:
         method: 'POST'
+      query:
+        method: 'GET'
+        params:
+          searchParams: '@searchParams'
+        paramSerializer: '$httpParamSerializerJQLike'
+        isArray: true
+        url: '/json/blogs?:searchParams'
+
 ]
 
 services.factory 'RelHeroGrownLevel', [

@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   resources :items
   resources :banners
   get '/:format/items', :to => 'items#index'
+  get '/:format/blogs', :to => 'blogs#index'
+
 end

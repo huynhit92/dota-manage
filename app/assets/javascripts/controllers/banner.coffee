@@ -5,16 +5,26 @@ controller.controller 'BannersCtrl', [
   '$rootScope'
   'Helpers'
   'Banner'
-  ($scope, $rootScope, Helpers, Banner) ->
+  'Blog'
+  ($scope, $rootScope, Helpers, Banner, Blog) ->
     $scope.init = ->
       $scope.banners = $("#data").data('banners')
+      console.log $scope.banners
       return
 
     $scope.edit = (banner) ->
-      
+      console.log !!$scope.result
+
+      BANNER_BLOG = 1
+      BANNER_IMAGE = 2
+
       $scope.success = null
       $scope.errors = []
       $scope.banner = angular.copy banner
+      $scope.bannerType = if (banner? && banner.blog_id?) then BANNER_BLOG else BANNER_IMAGE
+
+      $scope.isBannerBlog = () ->
+        return $scope.bannerType is BANNER_BLOG
 
       $scope.save = (params) ->
         if _.isEmpty params
@@ -43,6 +53,25 @@ controller.controller 'BannersCtrl', [
             $scope.success = null
             return
           return
+        return
+
+      $scope.search = () ->
+        params =
+          q:
+            title_cont: $scope.search.title_cont
+            blog_category_id_eq: $scope.search.blog_category_id
+            s: "id desc"
+
+        Blog.query(params).$promise.then ( (value) ->
+          console.log value
+          $scope.result = value
+        )
+        return
+
+      $scope.setBlogId = (blog_id) ->
+        $scope.banner = {} unless $scope.banner
+        $scope.banner.blog_id = blog_id
+        $scope.result = null
         return
 
 

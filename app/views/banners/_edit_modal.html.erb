@@ -24,9 +24,34 @@
         <div class="row">
           <form role="form" class="row form-horizontal">
             <div class="form-group">
+              <label class="col-md-4 control-label">Banner Type</label>
+              <div class="col-md-6">
+                <select ng-model="bannerType" ng-options="k*1 as v for (k, v) in MASTERS.banner_types" class="form-control"></select>
+              </div>
+            </div>
+            <div class="form-group" ng-if="isBannerBlog();">
               <label class="col-md-4 control-label">ブログ</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" placeholder="ブログ" ng-model="banner.blog_id">
+              </div>
+            </div>
+            <div class="form-group" ng-if="isBannerBlog();">
+              <div class="col-md-5 col-md-offset-1">
+                <input ng-model="search.title_cont" type="text" class="form-control" placeholder="ブログタイトル">
+              </div>
+              <div class="col-md-3">
+                <select ng-model="search.blog_category_id" ng-options="k*1 as v for (k, v) in MASTERS.blog_categories" class="form-control"></select>
+              </div>
+              <div class="col-md-2"><button ng-click="search()" class="btn btn-primary">検索</button></div>
+              <div ng-if="!!result" class="col-md-8 col-md-offset-1">
+                <hr/>
+                <table class="table">
+                  <tr ng-repeat="res in result">
+                    <td>{{res.title}}</td>
+                    <td>{{res.blog_category_id}}</td>
+                    <td><button class="btn btn-primary" ng-click="setBlogId(res.id)">設定</button></td>
+                  </tr>
+                </table>
               </div>
             </div>
             <div class="form-group">
